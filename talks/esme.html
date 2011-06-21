@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<meta name="version" content="S5 1.3" />
+<meta name="tranSitions" content="true" />
+<title>Apache ESME- Using Scala and Lift for social messaging</title>
+<meta name="author" content="Vassil Dichev" />
+<meta name="date" content="15.06.2011" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 5196 2007-06-03 20:25:28Z wiemann $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left {
+  clear: left }
+
+img.align-right {
+  clear: right }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<script src="ui/scalax_gfx/slides.js" type="text/javascript"></script>
+<link rel="stylesheet" href="ui/scalax_gfx/slides.css"
+      type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/scalax_gfx/outline.css"
+      type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/scalax_gfx/print.css"
+      type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/scalax_gfx/opera.css"
+      type="text/css" media="projection" id="operaFix" />
+
+<style type="text/css">
+#currentSlide {display: none;}
+</style>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header">
+
+</div>
+<div id="footer">
+<h1>Apache ESME- Using Scala and Lift for social messaging</h1>
+
+</div>
+</div>
+<div class="presentation">
+<div class="slide" id="slide0">
+<h1 class="title">Apache ESME- Using Scala and Lift for social messaging</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>Vassil Dichev</td></tr>
+<tr><th class="docinfo-name">Date:</th>
+<td>15.06.2011</td></tr>
+</tbody>
+</table>
+
+</div>
+<div class="slide" id="esme-who">
+<h1>Esme who?</h1>
+<ul class="incremental simple">
+<li>Enterprise Social Messaging <span class="del">Experiment</span> Environment</li>
+<li>Biggest open-source Lift application</li>
+<li>Only Apache project using Scala exclusively</li>
+</ul>
+</div>
+<div class="slide" id="esme-history">
+<h1>ESME history</h1>
+<ul class="incremental simple">
+<li><strong>2007</strong> David Pollak creates Skittr (884 lines)</li>
+<li><strong>2008</strong> Three DemoJams (SAP)</li>
+<li><strong>2009</strong> ESME moves to Apache Incubator</li>
+<li><strong>2010</strong> ESME graduates to a top-level Apache project</li>
+</ul>
+</div>
+<div class="slide" id="yet-another-app">
+<h1>Yet Another App</h1>
+<div class="sidebar">
+<p class="first sidebar-title">&#64;jorgeortiz85</p>
+<img align="left" alt="images/jorgeortiz85.jpg" class="scale align-left" src="images/jorgeortiz85.jpg" width="128" height="128" style="width: 128; height: 128;" />
+<p class="last">Jorge Ortiz</p>
+</div>
+<!--  -->
+<blockquote class="right">
+ANOTHER <span class="del">mobile</span> social <span class="del">group</span> chat <span class="del">photo sharing</span> app! Exactly what I need!</blockquote>
+</div>
+<div class="slide" id="beyound-lift-chat-demo">
+<h1>Beyound Lift chat demo</h1>
+<ul class="incremental simple">
+<li>Real-time updates (years before Yammer)</li>
+<li>Pools (like Yammer groups)</li>
+<li>Retweets (months before Twitter)</li>
+<li>Built-in URL shortener</li>
+<li>Popularity stats (status.net)</li>
+<li>API (RESTful and Twitter-compatible)</li>
+<li>Actions (assemble bots/apps)<!-- Actions
+
+* Google Wave
+
+* OAuth
+
+* bots -->
+</li>
+</ul>
+<!-- Zawinski's Law was: "Every program attempts to expand until it can read email" and should now be "Every program expands until it can Tweet" -->
+</div>
+<div class="slide" id="action-examples">
+<h1>Action examples</h1>
+<table border="1" class="borderless docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">filter</th>
+<th class="head">perform</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>&quot;bieber&quot;</td>
+<td>filter</td>
+</tr>
+<tr><td>#Scala</td>
+<td>resend</td>
+</tr>
+<tr><td>to = &#64;me</td>
+<td><a class="reference external" href="mailto:my&#64;address.org">mailto:my&#64;address.org</a></td>
+</tr>
+<tr><td>every 5 mins</td>
+<td>rss:http://blog.esme.us/rss</td>
+</tr>
+<tr><td>pool:repl</td>
+<td>scala</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="slide" id="lift-pitch">
+<h1>Lift pitch</h1>
+<ul class="incremental simple">
+<li>Real-time updates with Comet</li>
+<li>Security</li>
+<li>Lightweight actors</li>
+<li>Modules</li>
+<li><a class="reference external" href="http://seventhings.liftweb.net/">...and more: http://SevenThings.liftweb.net</a></li>
+</ul>
+</div>
+<div class="slide" id="lift">
+<h1>Lift</h1>
+<div class="sidebar">
+<p class="first sidebar-title">&#64;djspiewak</p>
+<img align="left" alt="images/djspiewak.jpg" class="scale align-left" src="images/djspiewak.jpg" width="128" height="128" style="width: 128; height: 128;" />
+<p class="last">Daniel Spiewak</p>
+</div>
+<!--  -->
+<blockquote class="huge">
+Lift: think outside the Box.</blockquote>
+</div>
+<div class="slide" id="view-first">
+<h1>View first</h1>
+<img align="left" alt="images/esme-comet.png" class="scale align-left" src="images/esme-comet.png" width="900" height="636" style="width: 900; height: 636;" />
+</div>
+<div class="slide" id="comet">
+<h1>Comet</h1>
+<pre class="code-block html literal-block">
+<span class="nt">&lt;lift:comet</span> <span class="na">type=</span><span class="s">&quot;TagCloud&quot;</span><span class="nt">/&gt;</span>
+
+</pre>
+<pre class="code-block scala literal-block">
+<span class="k">class</span> <span class="nc">TagCloud</span> <span class="k">extends</span> <span class="nc">CometActor</span>
+  <span class="k">def</span> <span class="n">render</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="n">messages</span> <span class="k">=</span> <span class="n">lookupMessages</span><span class="o">()</span>
+    <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+        <span class="o">{</span>
+          <span class="o">...</span>
+        <span class="o">}</span>
+    <span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+  <span class="o">}</span>
+
+  <span class="k">override</span> <span class="k">def</span> <span class="n">lowPriority</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">UserActor</span><span class="o">.</span><span class="nc">MessageReceived</span><span class="o">(</span><span class="n">msg</span><span class="o">,</span> <span class="n">_</span><span class="o">)</span> <span class="k">=&gt;</span>
+      <span class="n">messages</span> <span class="k">=</span> <span class="o">(</span><span class="n">msg</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">is</span> <span class="o">::</span> <span class="n">messages</span><span class="o">).</span><span class="n">take</span><span class="o">(</span><span class="mi">40</span><span class="o">)</span>
+      <span class="n">reRender</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</pre>
+</div>
+<div class="slide" id="mapper">
+<h1>Mapper</h1>
+<pre class="code-block scala literal-block">
+<span class="k">val</span> <span class="n">mb</span> <span class="k">=</span> <span class="n">findAll</span><span class="o">(</span><span class="nc">By</span><span class="o">(</span><span class="n">user</span><span class="o">,</span> <span class="n">userId</span><span class="o">),</span>
+                 <span class="nc">OrderBy</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="nc">Descending</span><span class="o">),</span>
+                 <span class="nc">MaxRows</span><span class="o">(</span><span class="n">count</span><span class="o">))</span>
+
+</pre>
+</div>
+<div class="slide" id="embrace-immutability">
+<h1>Embrace immutability</h1>
+<ul class="incremental simple">
+<li>easy for concurrency</li>
+<li>easy to cache</li>
+<li>easy to distribute</li>
+</ul>
+</div>
+<div class="slide" id="actors">
+<h1>Actors</h1>
+<img align="left" alt="images/actors.png" class="scale align-left" src="images/actors.png" width="900" height="484" style="width: 900; height: 484;" />
+</div>
+<div class="slide" id="testing">
+<h1>Testing</h1>
+<pre class="code-block scala literal-block">
+<span class="s">&quot;no follower's message in home timeline&quot;</span> <span class="n">in</span> <span class="o">{</span>
+  <span class="n">post</span><span class="o">(</span><span class="s">&quot;/statuses/update.xml&quot;</span><span class="o">,</span>
+         <span class="n">followerClient</span><span class="o">,</span>
+         <span class="nc">Nil</span><span class="o">,</span>
+         <span class="s">&quot;status&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;follower_msg&quot;</span><span class="o">)</span>
+    <span class="o">\\(&lt;</span><span class="n">text</span><span class="o">&gt;</span><span class="n">follower_msg</span><span class="o">&lt;/</span><span class="n">text</span><span class="o">&gt;)</span>
+
+  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/statuses/home_timeline.xml&quot;</span><span class="o">)</span>
+    <span class="o">!\\(&lt;</span><span class="n">text</span><span class="o">&gt;</span><span class="n">follower_msg</span><span class="o">&lt;/</span><span class="n">text</span><span class="o">&gt;)</span>
+<span class="o">}</span>
+
+</pre>
+</div>
+<div class="slide" id="configure-ostrich">
+<h1>Configure Ostrich</h1>
+<pre class="code-block scala literal-block">
+<span class="k">if</span> <span class="o">(</span><span class="nc">Props</span><span class="o">.</span><span class="n">getBool</span><span class="o">(</span><span class="s">&quot;jmx.enable&quot;</span><span class="o">,</span> <span class="kc">false</span><span class="o">))</span>
+  <span class="nc">StatsMBean</span><span class="o">(</span><span class="s">&quot;org.apache.esme.stats&quot;</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">runtime</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">RuntimeEnvironment</span><span class="o">(</span><span class="n">getClass</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">config</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Config</span>
+<span class="n">config</span><span class="o">(</span><span class="s">&quot;admin_text_port&quot;</span><span class="o">)</span> <span class="k">=</span>
+  <span class="nc">Props</span><span class="o">.</span><span class="n">getInt</span><span class="o">(</span><span class="s">&quot;admin_text_port&quot;</span><span class="o">,</span> <span class="mi">9989</span><span class="o">)</span>
+<span class="n">config</span><span class="o">(</span><span class="s">&quot;admin_http_port&quot;</span><span class="o">)</span> <span class="k">=</span>
+  <span class="nc">Props</span><span class="o">.</span><span class="n">getInt</span><span class="o">(</span><span class="s">&quot;admin_http_port&quot;</span><span class="o">,</span> <span class="mi">9990</span><span class="o">)</span>
+<span class="nc">ServiceTracker</span><span class="o">.</span><span class="n">startAdmin</span><span class="o">(</span><span class="n">config</span><span class="o">,</span> <span class="n">runtime</span><span class="o">)</span>
+
+</pre>
+</div>
+<div class="slide" id="monitor-sessions">
+<h1>Monitor sessions</h1>
+<pre class="code-block scala literal-block">
+<span class="nc">SessionMaster</span><span class="o">.</span><span class="n">sessionWatchers</span> <span class="o">+:=</span> <span class="nc">SessionInfoDumper</span>
+
+<span class="nc">Stats</span><span class="o">.</span><span class="n">makeGauge</span><span class="o">(</span><span class="s">&quot;liftSessions&quot;</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nc">SessionInfoDumper</span><span class="o">.</span><span class="n">count</span><span class="o">.</span><span class="n">toDouble</span>
+<span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">SessionInfoDumper</span> <span class="k">extends</span> <span class="nc">LiftActor</span> <span class="o">{</span>
+  <span class="k">private</span> <span class="k">var</span> <span class="n">sessionSize</span> <span class="k">=</span> <span class="mi">0</span>
+  <span class="k">def</span> <span class="n">count</span> <span class="k">=</span> <span class="n">sessionSize</span>
+  <span class="k">protected</span> <span class="k">def</span> <span class="n">messageHandler</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">SessionWatcherInfo</span><span class="o">(</span><span class="n">sessions</span><span class="o">)</span> <span class="k">=&gt;</span>
+      <span class="n">sessionSize</span> <span class="k">=</span> <span class="n">sessions</span><span class="o">.</span><span class="n">size</span>
+
+</pre>
+</div>
+<div class="slide" id="using-ostrich">
+<h1>Using Ostrich</h1>
+<pre class="code-block scala literal-block">
+<span class="nc">Stats</span> <span class="n">incr</span> <span class="s">&quot;messagesDelivered&quot;</span>
+
+</pre>
+</div>
+<div class="slide" id="lift-modules">
+<h1>Lift modules</h1>
+<ul class="incremental simple">
+<li>Authentication<ul>
+<li>OpenID</li>
+<li>LDAP</li>
+<li>Container-based</li>
+</ul>
+</li>
+<li>Textile</li>
+<li>XMPP</li>
+</ul>
+</div>
+<div class="slide" id="ldap">
+<h1>LDAP</h1>
+<pre class="code-block scala literal-block">
+<span class="k">object</span> <span class="nc">myLdapVendor</span> <span class="k">extends</span> <span class="nc">LDAPVendor</span>
+
+<span class="n">myLdapVendor</span><span class="o">.</span><span class="n">configure</span><span class="o">(</span><span class="nc">Map</span><span class="o">(</span><span class="s">&quot;ldap.url&quot;</span> <span class="o">-&gt;</span>
+    <span class="s">&quot;ldap://%s:%s&quot;</span><span class="o">.</span><span class="n">format</span><span class="o">(</span><span class="n">ldapSrvHost</span><span class="o">,</span>
+                          <span class="n">ldapSrvPort</span><span class="o">),</span>
+  <span class="s">&quot;ldap.base&quot;</span> <span class="o">-&gt;</span> <span class="n">ldapSrvBase</span><span class="o">,</span>
+  <span class="s">&quot;ldap.userName&quot;</span> <span class="o">-&gt;</span> <span class="n">ldapSrvUsrName</span><span class="o">,</span>
+  <span class="s">&quot;ldap.password&quot;</span> <span class="o">-&gt;</span> <span class="n">ldapSrvPwd</span><span class="o">,</span>
+  <span class="s">&quot;ldap.authType&quot;</span> <span class="o">-&gt;</span> <span class="n">ldapSrvAuthType</span><span class="o">,</span>
+  <span class="s">&quot;referral&quot;</span> <span class="o">-&gt;</span> <span class="n">ldapSrvReferral</span><span class="o">,</span>
+  <span class="s">&quot;ldap.initial_context_factory&quot;</span> <span class="o">-&gt;</span>
+    <span class="n">ldapSrvCtxFactory</span><span class="o">))</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">myLdap</span><span class="o">.</span><span class="n">bindUser</span><span class="o">(</span><span class="n">constructNameWithPrefix</span><span class="o">(</span><span class="n">name</span><span class="o">),</span> <span class="n">pwd</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+  <span class="n">checkRoles</span><span class="o">(</span><span class="n">constructDistinguishedName</span><span class="o">(</span><span class="n">name</span><span class="o">)))</span> <span class="o">{</span>
+
+</pre>
+</div>
+<div class="slide" id="textile">
+<h1>Textile</h1>
+<pre class="code-block scala literal-block">
+<span class="nc">MsgParser</span><span class="o">.</span><span class="n">parseMessage</span><span class="o">(</span><span class="n">in</span><span class="o">)</span> <span class="n">map</span> <span class="o">{</span> <span class="n">lst</span> <span class="k">=&gt;</span>
+
+  <span class="k">val</span> <span class="n">xml</span> <span class="k">=</span> <span class="o">&lt;</span><span class="n">message</span><span class="o">&gt;&lt;</span><span class="n">body</span><span class="o">&gt;{</span>
+    <span class="n">lst</span> <span class="n">map</span> <span class="o">{</span>
+      <span class="c1">// get rid of extra paragraphs
+</span>      <span class="k">case</span> <span class="n">textile</span><span class="k">:</span> <span class="kt">Textile</span> <span class="o">=&gt;</span>
+        <span class="n">paraFixer</span><span class="o">(</span><span class="n">textile</span><span class="o">.</span><span class="n">toHtml</span><span class="o">)</span>
+    <span class="o">}</span>
+  <span class="o">}&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+
+</pre>
+</div>
+<div class="slide" id="lift-resources">
+<h1>Lift resources</h1>
+<table border="1" class="borderless docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Simply Lift</td>
+<td><a class="reference external" href="http://simply.liftweb.net/">http://simply.liftweb.net</a></td>
+</tr>
+<tr><td>Exploring Lift</td>
+<td><a class="reference external" href="http://exploring.liftweb.net/">http://exploring.liftweb.net</a></td>
+</tr>
+<tr><td>Lift in Action</td>
+<td><img align="left" alt="images/lift-in-action-cover.jpg" class="scale first last align-left" src="images/lift-in-action-cover.jpg" width="160" height="200" style="width: 160; height: 200;" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="slide" id="scala">
+<h1>Scala</h1>
+<div class="sidebar">
+<p class="first sidebar-title">&#64;al3x</p>
+<img align="left" alt="images/al3x.png" class="scale align-left" src="images/al3x.png" width="72" height="72" style="width: 72; height: 72;" />
+<p class="last">Alex Payne</p>
+</div>
+<!--  -->
+<blockquote class="right">
+… What fires me up about Scala is its pragmatism: good OOP, good FP, good type system. Very little dogma. A get-shit-done language.</blockquote>
+</div>
+<div class="slide" id="advanced-scala">
+<h1>Advanced Scala</h1>
+<ul class="incremental simple">
+<li>expressive</li>
+<li>extensible</li>
+<li>immutable structures</li>
+<li>actors</li>
+<li>XML support</li>
+<li>easy parsing</li>
+</ul>
+</div>
+<div class="slide" id="express-yourself">
+<h1>Express yourself</h1>
+<pre class="code-block scala literal-block">
+<span class="c1">// extractor for last element of a List
+</span><span class="k">object</span> <span class="nc">::&gt;</span> <span class="o">{</span><span class="k">def</span> <span class="n">unapply</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="o">(</span><span class="n">l</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span> <span class="k">=</span>
+  <span class="n">l</span> <span class="k">match</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="nc">Nil</span> <span class="k">=&gt;</span> <span class="nc">None</span>
+    <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="nc">Some</span><span class="o">(</span> <span class="o">(</span><span class="n">l</span><span class="o">.</span><span class="n">init</span><span class="o">,</span> <span class="n">l</span><span class="o">.</span><span class="n">last</span><span class="o">)</span> <span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">case</span> <span class="nc">Req</span><span class="o">(</span><span class="nc">ApiPath</span> <span class="o">::&gt;</span>
+        <span class="s">&quot;statuses&quot;</span> <span class="o">::&gt;</span>
+        <span class="s">&quot;user_timeline&quot;</span><span class="o">,</span>
+  <span class="k">this</span><span class="o">.</span><span class="n">method</span><span class="o">,</span> <span class="nc">GetRequest</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">userTimeline</span>
+
+</pre>
+</div>
+<div class="slide" id="functional-meets-oop">
+<h1>Functional meets OOP</h1>
+<pre class="code-block scala literal-block">
+<span class="k">override</span> <span class="k">lazy</span> <span class="k">val</span> <span class="n">lineElem</span><span class="k">:</span> <span class="kt">Parser</span><span class="o">[</span><span class="kt">Textile</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="n">not</span><span class="o">(</span><span class="n">blankLine</span><span class="o">)</span> <span class="o">~&gt;</span>
+    <span class="o">(</span><span class="n">endOfLine</span> <span class="o">|</span> <span class="n">image</span> <span class="o">|</span> <span class="n">footnote_def</span> <span class="o">|</span>
+     <span class="n">anchor</span> <span class="o">|</span> <span class="n">dimension</span> <span class="o">|</span> <span class="n">elipsis</span>  <span class="o">|</span>
+     <span class="n">copyright</span> <span class="o">|</span> <span class="n">trademark</span> <span class="o">|</span> <span class="n">registered</span> <span class="o">|</span>
+     <span class="n">emDash</span> <span class="o">|</span>
+     <span class="n">enDash</span> <span class="o">|</span> <span class="n">italic</span> <span class="o">|</span> <span class="n">emph</span> <span class="o">|</span> <span class="n">bold</span>  <span class="o">|</span>
+     <span class="n">cite</span> <span class="o">|</span>  <span class="n">span</span> <span class="o">|</span> <span class="n">code</span> <span class="o">|</span> <span class="n">delete</span> <span class="o">|</span> <span class="n">insert</span> <span class="o">|</span>
+     <span class="n">sup</span> <span class="o">|</span> <span class="n">sub</span> <span class="o">|</span> <span class="n">strong</span> <span class="o">|</span> <span class="n">html</span> <span class="o">|</span>
+     <span class="n">single_quote</span> <span class="o">|</span> <span class="n">quote</span> <span class="o">|</span> <span class="n">acronym</span> <span class="o">|</span>
+     <span class="n">atName</span> <span class="o">|</span> <span class="n">hashTag</span> <span class="o">|</span> <span class="n">charBlock</span><span class="o">)</span>
+<span class="o">}</span>
+
+</pre>
+</div>
+<div class="slide" id="trapexit">
+<h1>trapExit</h1>
+<ul class="incremental simple">
+<li>audience !? Questions</li>
+<li>audience ! ThankYou</li>
+</ul>
+</div>
+</div>
+</body>
+</html>
