@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<meta name="version" content="S5 1.3" />
+<meta name="tranSitions" content="true" />
+<title>Actors- concurrent and distributed</title>
+<meta name="author" content="Vassil Dichev" />
+<meta name="date" content="04.11.2011" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 5196 2007-06-03 20:25:28Z wiemann $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left {
+  clear: left }
+
+img.align-right {
+  clear: right }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<script src="ui/java2days_gfx/slides.js" type="text/javascript"></script>
+<link rel="stylesheet" href="ui/java2days_gfx/slides.css"
+      type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/java2days_gfx/outline.css"
+      type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/java2days_gfx/print.css"
+      type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/java2days_gfx/opera.css"
+      type="text/css" media="projection" id="operaFix" />
+
+<style type="text/css">
+#currentSlide {display: none;}
+</style>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header">
+<div id="header">
+<img alt="images/java2days.png" class="scale" src="images/java2days.png" width="259" height="73" style="width: 259; height: 73;" />
+
+</div>
+
+</div>
+<div id="footer">
+<h1>Actors- concurrent and distributed</h1>
+<h2>2011 Java2Days Conference | 3-4 November, Sofia, Bulgaria | www.java2days.com</h2>
+</div>
+</div>
+<div class="presentation">
+<div class="slide" id="slide0">
+<h1 class="title">Actors- concurrent and distributed</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>Vassil Dichev</td></tr>
+<tr><th class="docinfo-name">Date:</th>
+<td>04.11.2011</td></tr>
+</tbody>
+</table>
+
+</div>
+<div class="slide" id="why">
+<h1>Why</h1>
+<p class="huge center">It's time to raise the level of abstraction.</p>
+<ul class="incremental simple">
+<li>1970s: GOTO considered harmful</li>
+<li>1990s: manual memory management</li>
+<li>2010-...: threads/locks</li>
+</ul>
+</div>
+<div class="slide" id="shared-state">
+<h1>Shared-state</h1>
+<div class="sidebar">
+<p class="first sidebar-title"></p>
+<div align="center" class="align-center"><img alt="images/DiningPhilosophers.gif" class="scale last align-center" src="images/DiningPhilosophers.gif" width="246" height="324" style="width: 246; height: 324;" /></div>
+</div>
+<ul class="simple">
+<li>Staleness</li>
+<li>Corruption</li>
+<li>Liveness</li>
+<li>Performance</li>
+</ul>
+</div>
+<div class="slide" id="the-interview">
+<h1>The interview</h1>
+<div align="center" class="align-center"><img alt="images/inception_threads.png" class="scale align-center" src="images/inception_threads.png" width="328" height="534" style="width: 328; height: 534;" /></div>
+</div>
+<div class="slide" id="puzzle">
+<h1>Puzzle</h1>
+<pre class="code-block java literal-block">
+<span class="c1">// jcip.net/listings/Holder.java
+</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Holder</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Holder</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">assertSanity</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">!=</span> <span class="n">n</span><span class="o">)</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">AssertionError</span><span class="o">(</span>
+                <span class="s">&quot;This statement is false.&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</pre>
+</div>
+<div class="slide" id="threads-locks">
+<h1>Threads/locks</h1>
+<div class="sidebar">
+<p class="first sidebar-title"></p>
+<div align="center" class="align-center"><img alt="images/locks.jpg" class="scale last align-center" src="images/locks.jpg" width="377" height="352" style="width: 377; height: 352;" /></div>
+</div>
+<ul class="simple">
+<li>Easy to get wrong</li>
+<li>Difficult to debug</li>
+<li>Break encapsulation</li>
+<li>Locks don't compose</li>
+<li>Threads don't scale</li>
+</ul>
+</div>
+<div class="slide" id="best-practices">
+<h1>Best practices</h1>
+<div class="sidebar">
+<p class="first sidebar-title"></p>
+<div align="center" class="align-center"><img alt="images/jcip-cover.jpg" class="scale last align-center" src="images/jcip-cover.jpg" width="284.25" height="373.5" style="width: 284.25; height: 373.5;" /></div>
+</div>
+<ul class="simple">
+<li>Thread confinement</li>
+<li>Immutability</li>
+<li>Safe publication</li>
+</ul>
+</div>
+<div class="slide" id="actors">
+<h1>Actors</h1>
+<ul class="simple">
+<li>Private state</li>
+<li>Immutable messages</li>
+<li>Asynchronous</li>
+</ul>
+</div>
+<div class="slide" id="inversion-of-control">
+<h1>Inversion of control</h1>
+<p>Hollywood principle: Don't call me, I'll call you.</p>
+<div align="center" class="align-center"><img alt="images/oscars.jpg" class="scale align-center" src="images/oscars.jpg" width="500" height="346" style="width: 500; height: 346;" /></div>
+</div>
+<div class="slide" id="actor-implementation">
+<h1>Actor implementation</h1>
+<div align="center" class="align-center"><img alt="images/concurrency_actor.png" class="scale align-center" src="images/concurrency_actor.png" width="500" height="230" style="width: 500; height: 230;" /></div>
+<ul class="simple">
+<li>Handler</li>
+<li>Internal message queue</li>
+</ul>
+</div>
+<div class="slide" id="share-nothing-advantages">
+<h1>Share-nothing advantages</h1>
+<ul class="simple">
+<li>Concurrency</li>
+<li>Distribution</li>
+<li>Fault-tolerance</li>
+</ul>
+</div>
+<div class="slide" id="history">
+<h1>History</h1>
+<ul class="simple">
+<li>Communicating Sequential Processes (C.A.R. Hoare)</li>
+<li>Actor model (Carl Hewitt)</li>
+<li>Erlang</li>
+<li>Dart</li>
+</ul>
+</div>
+<div class="slide" id="erlang-scales">
+<h1>Erlang scales</h1>
+<ul class="simple">
+<li>Ericsson phone switches<ul>
+<li>99,9999999% uptime</li>
+</ul>
+</li>
+<li>Facebook chat<ul>
+<li>70 million concurrent users</li>
+</ul>
+</li>
+<li>RabbitMQ<ul>
+<li>400 000 messages/sec</li>
+</ul>
+</li>
+<li>Apache CouchDB<ul>
+<li>distributed fault-tolerant DB</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="jvm-actors">
+<h1>JVM actors</h1>
+<ul class="simple">
+<li>Java<ul>
+<li><a class="reference external" href="http://www.malhar.net/sriram/kilim/">Kilim</a></li>
+<li><a class="reference external" href="http://code.google.com/p/jetlang/">Jetlang</a></li>
+</ul>
+</li>
+<li>Scala<ul>
+<li><a class="reference external" href="http://www.scala-lang.org/node/242">Scala actors</a></li>
+<li><a class="reference external" href="http://liftweb.net">Lift actors</a></li>
+<li><a class="reference external" href="http://akka.io">Akka</a></li>
+</ul>
+</li>
+<li>Groovy<ul>
+<li><a class="reference external" href="http://gpars.codehaus.org/">GPars</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="akka-actors">
+<h1>Akka actors</h1>
+<ul class="simple">
+<li>Toolkit for<ul>
+<li>concurrency</li>
+<li>scalability</li>
+<li>fault-tolerance</li>
+</ul>
+</li>
+<li>lightweight (4 million actors on a JVM)</li>
+<li>Java and Scala APIs</li>
+<li>Integration with Spring</li>
+</ul>
+</div>
+<div class="slide" id="define-actors-scala">
+<h1>Define actors (Scala)</h1>
+<pre class="code-block scala literal-block">
+<span class="k">class</span> <span class="nc">MyActor</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="s">&quot;test&quot;</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;received test&quot;</span><span class="o">)</span>
+    <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;unknown message&quot;</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</pre>
+</div>
+<div class="slide" id="define-actors-java">
+<h1>Define actors (Java)</h1>
+<pre class="code-block java literal-block">
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SampleUntypedActor</span>
+    <span class="kd">extends</span> <span class="n">UntypedActor</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onReceive</span><span class="o">(</span><span class="n">Object</span> <span class="n">message</span><span class="o">)</span>
+        <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">message</span> <span class="k">instanceof</span> <span class="n">String</span><span class="o">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&quot;Got String: %s&quot;</span><span class="o">,</span> <span class="n">message</span><span class="o">));</span>
+    <span class="k">else</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span>
+            <span class="s">&quot;Unknown message: &quot;</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</pre>
+</div>
+<div class="slide" id="create-and-call">
+<h1>Create and call</h1>
+<ul>
+<li><p class="first">Scala</p>
+<pre class="code-block scala literal-block">
+<span class="k">val</span> <span class="n">actor</span> <span class="k">=</span> <span class="nc">Actor</span><span class="o">.</span><span class="n">actorOf</span><span class="o">[</span><span class="kt">MyActor</span><span class="o">]</span>
+<span class="n">actor</span><span class="o">.</span><span class="n">start</span><span class="o">()</span>
+<span class="c1">// asynchronous- &quot;fire-and-forget&quot;
+</span><span class="n">actor</span> <span class="o">!</span> <span class="s">&quot;Hello&quot;</span>
+
+</pre>
+</li>
+<li><p class="first">Java</p>
+<pre class="code-block java literal-block">
+<span class="n">ActorRef</span> <span class="n">actor</span> <span class="o">=</span> <span class="n">actorOf</span><span class="o">(</span>
+    <span class="n">SampleUntypedActor</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">actor</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="c1">// asynchronous- &quot;fire-and-forget&quot;
+</span><span class="n">actor</span><span class="o">.</span><span class="na">tell</span><span class="o">(</span><span class="s">&quot;Hello&quot;</span><span class="o">);</span>
+
+</pre>
+</li>
+</ul>
+</div>
+<div class="slide" id="send-and-receive">
+<h1>Send-and-receive</h1>
+<ul>
+<li><p class="first">Scala</p>
+<pre class="code-block scala literal-block">
+<span class="k">val</span> <span class="n">future</span> <span class="k">=</span> <span class="n">actor</span> <span class="o">?</span> <span class="s">&quot;Hello&quot;</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">s</span> <span class="k">&lt;-</span> <span class="n">future</span><span class="o">.</span><span class="n">as</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="n">println</span><span class="o">(</span><span class="n">s</span><span class="o">)</span>
+
+</pre>
+</li>
+<li><p class="first">Java</p>
+<pre class="code-block java literal-block">
+<span class="n">Future</span> <span class="n">future</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="na">ask</span><span class="o">(</span><span class="s">&quot;Hello&quot;</span><span class="o">);</span>
+<span class="n">future</span><span class="o">.</span><span class="na">await</span><span class="o">();</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">future</span><span class="o">.</span><span class="na">isCompleted</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">Option</span> <span class="n">resultOption</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="na">result</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">resultOption</span><span class="o">.</span><span class="na">isDefined</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">Object</span> <span class="n">result</span> <span class="o">=</span> <span class="n">resultOption</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+
+</pre>
+</li>
+</ul>
+</div>
+<div class="slide" id="dispatchers">
+<h1>Dispatchers</h1>
+<ul class="simple">
+<li>Thread-based</li>
+<li>Event-based</li>
+<li>Priority event-based</li>
+<li>Work-stealing (Fork/join framework)</li>
+</ul>
+</div>
+<div class="slide" id="remote-actors">
+<h1>Remote actors</h1>
+<pre class="code-block scala literal-block">
+<span class="n">remote</span><span class="o">().</span><span class="n">start</span><span class="o">()</span>
+<span class="n">remote</span><span class="o">().</span><span class="n">register</span><span class="o">(</span><span class="s">&quot;user-service&quot;</span><span class="o">,</span> <span class="n">actor</span><span class="o">)</span>
+<span class="o">...</span>
+<span class="k">val</span> <span class="n">actor</span> <span class="k">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">actorFor</span><span class="o">(</span><span class="s">&quot;user-service&quot;</span><span class="o">,</span>
+  <span class="s">&quot;localhost&quot;</span><span class="o">,</span> <span class="mi">2552</span><span class="o">)</span>
+
+</pre>
+</div>
+<div class="slide" id="cloudy-akka">
+<h1>Cloudy Akka</h1>
+<ul class="simple">
+<li>Clustered actors</li>
+<li>Automatic replication</li>
+<li>Automatic deployment</li>
+<li>Automatic failover</li>
+</ul>
+</div>
+<div class="slide" id="failover">
+<h1>Failover</h1>
+<!--  -->
+<blockquote class="huge center">
+<p>If you can't detect a failure, you can't fix it</p>
+<p class="attribution">&mdash;Joe Armstrong</p>
+</blockquote>
+</div>
+<div class="slide" id="error-handling-in-java">
+<h1>Error handling in Java</h1>
+<pre class="code-block java literal-block">
+<span class="k">try</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+        <span class="o">}</span>
+    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</pre>
+</div>
+<div class="slide" id="let-it-crash">
+<h1>Let it crash</h1>
+<div class="sidebar">
+<p class="first sidebar-title"></p>
+<div align="center" class="align-center"><img alt="images/sup4.gif" class="scale last align-center" src="images/sup4.gif" width="376" height="186" style="width: 376; height: 186;" /></div>
+</div>
+<ul>
+<li><p class="first">link to supervisors</p>
+<pre class="code-block scala literal-block">
+<span class="n">supervisor</span><span class="o">.</span><span class="n">link</span><span class="o">(</span><span class="n">actor</span><span class="o">)</span>
+
+</pre>
+</li>
+<li><p class="first">configure</p>
+<ul class="simple">
+<li>strategy<ul>
+<li>one-for-one</li>
+<li>all-for-one</li>
+</ul>
+</li>
+<li>restart<ul>
+<li>timeout</li>
+<li>number of failures</li>
+</ul>
+</li>
+<li>behaviour<ul>
+<li>pre stop</li>
+<li>post restart</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="no-silver-bullet">
+<h1>No silver bullet</h1>
+<div class="sidebar">
+<p class="first sidebar-title"></p>
+<div align="center" class="align-center"><img alt="images/silver-bullet.jpg" class="scale last align-center" src="images/silver-bullet.jpg" width="338.25" height="282" style="width: 338.25; height: 282;" /></div>
+</div>
+<!--  -->
+<blockquote class="incremental">
+Will actors solve all my concurrency / distribution / failover problems?</blockquote>
+<!--  -->
+<blockquote class="incremental huge center">
+Maybe</blockquote>
+<!--  -->
+<blockquote class="incremental center">
+Maybe not</blockquote>
+</div>
+<div class="slide" id="just-a-tool">
+<h1>Just a tool</h1>
+<div class="sidebar">
+<p class="first sidebar-title"></p>
+<div align="center" class="align-center"><img alt="images/agent_smith.jpg" class="scale last align-center" src="images/agent_smith.jpg" width="400" height="300" style="width: 400; height: 300;" /></div>
+</div>
+<ul class="simple">
+<li>Agents</li>
+<li>Futures</li>
+<li>Software Transactional Memory</li>
+<li>Dataflow concurrency</li>
+</ul>
+</div>
+<div class="slide" id="poststop">
+<h1>postStop</h1>
+<ul class="incremental simple">
+<li>audience ? &quot;Questions&quot;</li>
+<li>audience ! &quot;Thank You&quot;</li>
+<li>self.stop()</li>
+</ul>
+</div>
+</div>
+</body>
+</html>
