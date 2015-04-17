@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<meta name="version" content="S5 1.3" />
+<meta name="tranSitions" content="true" />
+<title>Apache ESME- Lift and social apps</title>
+<meta name="author" content="Vassil Dichev" />
+<meta name="date" content="21.10.2011" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 5196 2007-06-03 20:25:28Z wiemann $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left {
+  clear: left }
+
+img.align-right {
+  clear: right }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<script src="ui/scalax_gfx/slides.js" type="text/javascript"></script>
+<link rel="stylesheet" href="ui/scalax_gfx/slides.css"
+      type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/scalax_gfx/outline.css"
+      type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/scalax_gfx/print.css"
+      type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/scalax_gfx/opera.css"
+      type="text/css" media="projection" id="operaFix" />
+
+<style type="text/css">
+#currentSlide {display: none;}
+</style>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header">
+
+</div>
+<div id="footer">
+<h1>Apache ESME- Lift and social apps</h1>
+
+</div>
+</div>
+<div class="presentation">
+<div class="slide" id="slide0">
+<h1 class="title">Apache ESME- Lift and social apps</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>Vassil Dichev</td></tr>
+<tr><th class="docinfo-name">Date:</th>
+<td>21.10.2011</td></tr>
+</tbody>
+</table>
+
+</div>
+<div class="slide" id="stairway-to-scala">
+<h1>Stairway to Scala</h1>
+<ul class="incremental simple">
+<li>J2EE refugee<!-- started with EJB 1.x -->
+</li>
+<li>Spring- &quot;J2EE light&quot;</li>
+<li>Fun with Python/Ruby<!-- comprehensions/map FTW! -->
+</li>
+<li>Discovered Scala and Lift</li>
+<li>Time-strapped dad</li>
+</ul>
+</div>
+<div class="slide" id="no-time-for-boilerplate">
+<h1>No time for boilerplate</h1>
+<!--  -->
+<blockquote class="right">
+These days I'd say that my love for expressive programming languages is mostly driven by a near-complete lack of free time.</blockquote>
+<div class="sidebar">
+<p class="first sidebar-title">&#64;fogus</p>
+<img align="left" alt="images/fogus.jpg" class="scale align-left" src="images/fogus.jpg" width="128" height="128" style="width: 128; height: 128;" />
+<p class="last">Michael Fogus</p>
+</div>
+</div>
+<div class="slide" id="esme-who">
+<h1>Esme who?</h1>
+<ul class="incremental simple">
+<li>Enterprise Social Messaging <span class="del">Experiment</span>/Environment</li>
+<li>Biggest open-source Lift application</li>
+<li>First Apache project using Scala exclusively</li>
+</ul>
+</div>
+<div class="slide" id="esme-history">
+<h1>ESME history</h1>
+<ul class="incremental simple">
+<li><strong>2007</strong> David Pollak creates Skittr (884 lines)</li>
+<li><strong>2008</strong> SAP community joins to start ESME</li>
+<li><strong>2009</strong> ESME moves to Apache Incubator</li>
+<li><strong>2010</strong> ESME graduates to a top-level Apache project</li>
+<li><strong>2011</strong> ~8000 lines of Scala</li>
+</ul>
+</div>
+<div class="slide" id="yet-another-app">
+<h1>Yet Another App</h1>
+<!--  -->
+<blockquote class="right">
+ANOTHER <span class="del">mobile</span> social <span class="del">group</span> chat <span class="del">photo sharing</span> app! Exactly what I need!</blockquote>
+<div class="sidebar">
+<p class="first sidebar-title">&#64;jorgeortiz85</p>
+<img align="left" alt="images/jorgeortiz85.jpg" class="scale align-left" src="images/jorgeortiz85.jpg" width="128" height="128" style="width: 128; height: 128;" />
+<p class="last">Jorge Ortiz</p>
+</div>
+</div>
+<div class="slide" id="beyound-lift-chat-demo">
+<h1>Beyound Lift chat demo</h1>
+<ul class="incremental simple">
+<li>Real-time updates</li>
+<li>Pools</li>
+<li>Retweets</li>
+<li>Built-in URL shortener</li>
+<li>Popularity stats</li>
+<li>API (RESTful and Twitter-compatible)</li>
+<li>Actions<!-- Actions
+
+* Google Wave
+
+* OAuth
+
+* bots -->
+</li>
+</ul>
+</div>
+<div class="slide" id="action-examples">
+<h1>Action examples</h1>
+<table border="1" class="borderless docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">filter</th>
+<th class="head">perform</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>&quot;bieber&quot;</td>
+<td>filter</td>
+</tr>
+<tr><td>#Scala</td>
+<td>resend</td>
+</tr>
+<tr><td>to = &#64;me</td>
+<td><a class="reference external" href="mailto:my&#64;address.org">mailto:my&#64;address.org</a></td>
+</tr>
+<tr><td>every 5 mins</td>
+<td>rss:http://blog.esme.us/rss</td>
+</tr>
+<tr><td>pool:repl</td>
+<td>scala</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="slide" id="lift-pitch">
+<h1>Lift pitch</h1>
+<ul class="incremental simple">
+<li>Real-time</li>
+<li>Secure</li>
+<li>Scalable</li>
+<li>Concise</li>
+<li>Modules</li>
+<li><a class="reference external" href="http://seventhings.liftweb.net/">...and more: http://SevenThings.liftweb.net</a></li>
+</ul>
+</div>
+<div class="slide" id="is-lift-difficult">
+<h1>Is Lift difficult?</h1>
+<!--  -->
+<blockquote class="huge">
+Lift: think outside the Box.</blockquote>
+<div class="sidebar">
+<p class="first sidebar-title">&#64;djspiewak</p>
+<img align="left" alt="images/djspiewak.jpg" class="scale align-left" src="images/djspiewak.jpg" width="128" height="128" style="width: 128; height: 128;" />
+<p class="last">Daniel Spiewak</p>
+</div>
+</div>
+<div class="slide" id="view-first">
+<h1>View first</h1>
+<img align="left" alt="images/esme-view_first.jpg" class="scale align-left" src="images/esme-view_first.jpg" width="900" height="636" style="width: 900; height: 636;" />
+</div>
+<div class="slide" id="comet">
+<h1>Comet</h1>
+<pre class="code html literal-block">
+<span class="pygments-nt">&lt;lift:comet</span> <span class="pygments-na">type=</span><span class="pygments-s">&quot;TagCloud&quot;</span><span class="pygments-nt">/&gt;</span>
+
+</pre>
+<pre class="code scala literal-block">
+<span class="pygments-k">class</span> <span class="pygments-nc">TagCloud</span> <span class="pygments-k">extends</span> <span class="pygments-nc">CometActor</span>
+  <span class="pygments-k">def</span> <span class="pygments-n">render</span> <span class="pygments-k">=</span> <span class="pygments-o">{</span>
+    <span class="pygments-k">val</span> <span class="pygments-n">messages</span> <span class="pygments-k">=</span> <span class="pygments-n">lookupMessages</span><span class="pygments-o">()</span>
+    <span class="pygments-o">&lt;</span><span class="pygments-n">p</span><span class="pygments-o">&gt;</span>
+        <span class="pygments-o">{</span>
+          <span class="pygments-o">...</span>
+        <span class="pygments-o">}</span>
+    <span class="pygments-o">&lt;/</span><span class="pygments-n">p</span><span class="pygments-o">&gt;</span>
+  <span class="pygments-o">}</span>
+  <span class="pygments-k">override</span> <span class="pygments-k">def</span> <span class="pygments-n">lowPriority</span> <span class="pygments-k">=</span> <span class="pygments-o">{</span>
+    <span class="pygments-k">case</span> <span class="pygments-nc">UserActor</span><span class="pygments-o">.</span><span class="pygments-nc">MessageReceived</span><span class="pygments-o">(</span><span class="pygments-n">msg</span><span class="pygments-o">,</span> <span class="pygments-n">_</span><span class="pygments-o">)</span> <span class="pygments-k">=&gt;</span>
+      <span class="pygments-n">messages</span> <span class="pygments-k">=</span> <span class="pygments-o">(</span><span class="pygments-n">msg</span><span class="pygments-o">.</span><span class="pygments-n">id</span><span class="pygments-o">.</span><span class="pygments-n">is</span> <span class="pygments-o">::</span> <span class="pygments-n">messages</span><span class="pygments-o">).</span><span class="pygments-n">take</span><span class="pygments-o">(</span><span class="pygments-mi">40</span><span class="pygments-o">)</span>
+      <span class="pygments-n">reRender</span><span class="pygments-o">(</span><span class="pygments-kc">false</span><span class="pygments-o">)</span>
+  <span class="pygments-o">}</span>
+<span class="pygments-o">}</span>
+
+</pre>
+</div>
+<div class="slide" id="mapper">
+<h1>Mapper</h1>
+<pre class="code scala literal-block">
+<span class="pygments-k">val</span> <span class="pygments-n">mb</span> <span class="pygments-k">=</span> <span class="pygments-n">findAll</span><span class="pygments-o">(</span><span class="pygments-nc">By</span><span class="pygments-o">(</span><span class="pygments-n">user</span><span class="pygments-o">,</span> <span class="pygments-n">userId</span><span class="pygments-o">),</span>
+                 <span class="pygments-nc">OrderBy</span><span class="pygments-o">(</span><span class="pygments-n">id</span><span class="pygments-o">,</span> <span class="pygments-nc">Descending</span><span class="pygments-o">),</span>
+                 <span class="pygments-nc">MaxRows</span><span class="pygments-o">(</span><span class="pygments-n">count</span><span class="pygments-o">))</span>
+
+</pre>
+</div>
+<div class="slide" id="actors">
+<h1>Actors</h1>
+<img align="left" alt="images/actors.jpg" class="scale align-left" src="images/actors.jpg" width="900" height="484" style="width: 900; height: 484;" />
+</div>
+<div class="slide" id="embrace-immutability">
+<h1>Embrace immutability</h1>
+<ul class="incremental simple">
+<li>easy for concurrency</li>
+<li>easy to cache</li>
+<li>easy to distribute</li>
+</ul>
+</div>
+<div class="slide" id="testing">
+<h1>Testing</h1>
+<pre class="code scala literal-block">
+<span class="pygments-s">&quot;no follower's message in home timeline&quot;</span> <span class="pygments-n">in</span> <span class="pygments-o">{</span>
+  <span class="pygments-n">post</span><span class="pygments-o">(</span><span class="pygments-s">&quot;/statuses/update.xml&quot;</span><span class="pygments-o">,</span>
+         <span class="pygments-n">followerClient</span><span class="pygments-o">,</span>
+         <span class="pygments-nc">Nil</span><span class="pygments-o">,</span>
+         <span class="pygments-s">&quot;status&quot;</span> <span class="pygments-o">-&gt;</span> <span class="pygments-s">&quot;follower_msg&quot;</span><span class="pygments-o">)</span>
+    <span class="pygments-o">\\(&lt;</span><span class="pygments-n">text</span><span class="pygments-o">&gt;</span><span class="pygments-n">follower_msg</span><span class="pygments-o">&lt;/</span><span class="pygments-n">text</span><span class="pygments-o">&gt;)</span>
+
+  <span class="pygments-n">get</span><span class="pygments-o">(</span><span class="pygments-s">&quot;/statuses/home_timeline.xml&quot;</span><span class="pygments-o">)</span>
+    <span class="pygments-o">!\\(&lt;</span><span class="pygments-n">text</span><span class="pygments-o">&gt;</span><span class="pygments-n">follower_msg</span><span class="pygments-o">&lt;/</span><span class="pygments-n">text</span><span class="pygments-o">&gt;)</span>
+<span class="pygments-o">}</span>
+
+</pre>
+</div>
+<div class="slide" id="lift-modules">
+<h1>Lift modules</h1>
+<ul class="incremental simple">
+<li>Authentication<ul>
+<li>OpenID</li>
+<li>LDAP</li>
+<li>Container-based</li>
+</ul>
+</li>
+<li>Textile</li>
+<li>XMPP</li>
+</ul>
+</div>
+<div class="slide" id="ldap">
+<h1>LDAP</h1>
+<pre class="code scala literal-block">
+<span class="pygments-k">object</span> <span class="pygments-nc">myLdapVendor</span> <span class="pygments-k">extends</span> <span class="pygments-nc">LDAPVendor</span>
+
+<span class="pygments-n">myLdapVendor</span><span class="pygments-o">.</span><span class="pygments-n">configure</span><span class="pygments-o">(</span><span class="pygments-nc">Map</span><span class="pygments-o">(</span><span class="pygments-s">&quot;ldap.url&quot;</span> <span class="pygments-o">-&gt;</span>
+    <span class="pygments-s">&quot;ldap://%s:%s&quot;</span><span class="pygments-o">.</span><span class="pygments-n">format</span><span class="pygments-o">(</span><span class="pygments-n">ldapSrvHost</span><span class="pygments-o">,</span>
+                          <span class="pygments-n">ldapSrvPort</span><span class="pygments-o">),</span>
+  <span class="pygments-s">&quot;ldap.base&quot;</span> <span class="pygments-o">-&gt;</span> <span class="pygments-n">ldapSrvBase</span><span class="pygments-o">,</span>
+  <span class="pygments-s">&quot;ldap.userName&quot;</span> <span class="pygments-o">-&gt;</span> <span class="pygments-n">ldapSrvUsrName</span><span class="pygments-o">,</span>
+  <span class="pygments-s">&quot;ldap.password&quot;</span> <span class="pygments-o">-&gt;</span> <span class="pygments-n">ldapSrvPwd</span><span class="pygments-o">,</span>
+  <span class="pygments-s">&quot;ldap.authType&quot;</span> <span class="pygments-o">-&gt;</span> <span class="pygments-n">ldapSrvAuthType</span><span class="pygments-o">,</span>
+  <span class="pygments-s">&quot;referral&quot;</span> <span class="pygments-o">-&gt;</span> <span class="pygments-n">ldapSrvReferral</span><span class="pygments-o">,</span>
+  <span class="pygments-s">&quot;ldap.initial_context_factory&quot;</span> <span class="pygments-o">-&gt;</span>
+    <span class="pygments-n">ldapSrvCtxFactory</span><span class="pygments-o">))</span>
+
+<span class="pygments-k">if</span><span class="pygments-o">(</span><span class="pygments-n">myLdap</span><span class="pygments-o">.</span><span class="pygments-n">bindUser</span><span class="pygments-o">(</span><span class="pygments-n">constructNameWithPrefix</span><span class="pygments-o">(</span><span class="pygments-n">name</span><span class="pygments-o">),</span> <span class="pygments-n">pwd</span><span class="pygments-o">)</span> <span class="pygments-o">&amp;&amp;</span>
+  <span class="pygments-n">checkRoles</span><span class="pygments-o">(</span><span class="pygments-n">constructDistinguishedName</span><span class="pygments-o">(</span><span class="pygments-n">name</span><span class="pygments-o">)))</span> <span class="pygments-o">{</span>
+
+</pre>
+</div>
+<div class="slide" id="textile">
+<h1>Textile</h1>
+<pre class="code scala literal-block">
+<span class="pygments-nc">MsgParser</span><span class="pygments-o">.</span><span class="pygments-n">parseMessage</span><span class="pygments-o">(</span><span class="pygments-n">in</span><span class="pygments-o">)</span> <span class="pygments-n">map</span> <span class="pygments-o">{</span> <span class="pygments-n">lst</span> <span class="pygments-k">=&gt;</span>
+
+  <span class="pygments-k">val</span> <span class="pygments-n">xml</span> <span class="pygments-k">=</span> <span class="pygments-o">&lt;</span><span class="pygments-n">message</span><span class="pygments-o">&gt;&lt;</span><span class="pygments-n">body</span><span class="pygments-o">&gt;{</span>
+    <span class="pygments-n">lst</span> <span class="pygments-n">map</span> <span class="pygments-o">{</span>
+      <span class="pygments-c1">// get rid of extra paragraphs
+</span>      <span class="pygments-k">case</span> <span class="pygments-n">textile</span><span class="pygments-k">:</span> <span class="pygments-kt">Textile</span> <span class="pygments-o">=&gt;</span>
+        <span class="pygments-n">paraFixer</span><span class="pygments-o">(</span><span class="pygments-n">textile</span><span class="pygments-o">.</span><span class="pygments-n">toHtml</span><span class="pygments-o">)</span>
+    <span class="pygments-o">}</span>
+  <span class="pygments-o">}&lt;/</span><span class="pygments-n">body</span><span class="pygments-o">&gt;</span>
+
+</pre>
+</div>
+<div class="slide" id="lift-resources">
+<h1>Lift resources</h1>
+<table border="1" class="borderless docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Simply Lift</td>
+<td><a class="reference external" href="http://simply.liftweb.net/">http://simply.liftweb.net</a></td>
+</tr>
+<tr><td>Exploring Lift</td>
+<td><a class="reference external" href="http://exploring.liftweb.net/">http://exploring.liftweb.net</a></td>
+</tr>
+<tr><td>Lift in Action</td>
+<td><img align="left" alt="images/lift-in-action-cover.jpg" class="scale first last align-left" src="images/lift-in-action-cover.jpg" width="160" height="200" style="width: 160; height: 200;" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="slide" id="inventing-yourself">
+<h1>Inventing yourself</h1>
+<!--  -->
+<blockquote class="huge">
+OH: &quot;We <em>invented</em> NIH.&quot;</blockquote>
+<div class="sidebar">
+<p class="first sidebar-title">&#64;ebowman</p>
+<img align="left" alt="images/ebowman.jpg" class="scale align-left" src="images/ebowman.jpg" width="128" height="128" style="width: 128; height: 128;" />
+<p class="last">Eric Bowman</p>
+</div>
+</div>
+<div class="slide" id="rss">
+<h1>RSS</h1>
+<pre class="code scala literal-block">
+<span class="pygments-k">override</span> <span class="pygments-k">def</span> <span class="pygments-n">getText</span><span class="pygments-o">(</span><span class="pygments-n">node</span><span class="pygments-k">:</span> <span class="pygments-kt">Node</span><span class="pygments-o">)</span> <span class="pygments-k">=</span> <span class="pygments-o">{</span>
+  <span class="pygments-c1">// if there's no title, get description
+</span>  <span class="pygments-k">val</span> <span class="pygments-n">title</span> <span class="pygments-k">=</span> <span class="pygments-n">node</span> <span class="pygments-o">\</span> <span class="pygments-s">&quot;title&quot;</span>
+  <span class="pygments-k">if</span> <span class="pygments-o">(</span><span class="pygments-n">title</span> <span class="pygments-n">isEmpty</span><span class="pygments-o">)</span>
+    <span class="pygments-n">node</span> <span class="pygments-o">\</span> <span class="pygments-s">&quot;description&quot;</span> <span class="pygments-n">text</span>
+  <span class="pygments-k">else</span>
+    <span class="pygments-n">title</span> <span class="pygments-n">text</span>
+<span class="pygments-o">}</span>
+<span class="pygments-k">override</span> <span class="pygments-k">def</span> <span class="pygments-n">getLink</span><span class="pygments-o">(</span><span class="pygments-n">node</span><span class="pygments-k">:</span> <span class="pygments-kt">Node</span><span class="pygments-o">)</span> <span class="pygments-k">=</span> <span class="pygments-o">{</span>
+  <span class="pygments-c1">// a link is optional
+</span>  <span class="pygments-k">val</span> <span class="pygments-n">link</span> <span class="pygments-k">=</span> <span class="pygments-n">node</span> <span class="pygments-o">\</span> <span class="pygments-s">&quot;link&quot;</span>
+  <span class="pygments-k">if</span> <span class="pygments-o">(</span><span class="pygments-n">link</span> <span class="pygments-n">isEmpty</span><span class="pygments-o">)</span>
+    <span class="pygments-s">&quot;&quot;</span>
+  <span class="pygments-k">else</span>
+    <span class="pygments-n">link</span> <span class="pygments-n">text</span>
+<span class="pygments-o">}</span>
+
+</pre>
+</div>
+<div class="slide" id="express-yourself">
+<h1>Express yourself</h1>
+<pre class="code scala literal-block">
+<span class="pygments-c1">// extractor for last element of a List
+</span><span class="pygments-k">object</span> <span class="pygments-nc">::&gt;</span> <span class="pygments-o">{</span><span class="pygments-k">def</span> <span class="pygments-n">unapply</span><span class="pygments-o">[</span><span class="pygments-kt">A</span><span class="pygments-o">]</span> <span class="pygments-o">(</span><span class="pygments-n">l</span><span class="pygments-k">:</span> <span class="pygments-kt">List</span><span class="pygments-o">[</span><span class="pygments-kt">A</span><span class="pygments-o">])</span> <span class="pygments-k">=</span>
+  <span class="pygments-n">l</span> <span class="pygments-k">match</span> <span class="pygments-o">{</span>
+    <span class="pygments-k">case</span> <span class="pygments-nc">Nil</span> <span class="pygments-k">=&gt;</span> <span class="pygments-nc">None</span>
+    <span class="pygments-k">case</span> <span class="pygments-k">_</span> <span class="pygments-k">=&gt;</span> <span class="pygments-nc">Some</span><span class="pygments-o">(</span> <span class="pygments-o">(</span><span class="pygments-n">l</span><span class="pygments-o">.</span><span class="pygments-n">init</span><span class="pygments-o">,</span> <span class="pygments-n">l</span><span class="pygments-o">.</span><span class="pygments-n">last</span><span class="pygments-o">)</span> <span class="pygments-o">)</span>
+  <span class="pygments-o">}</span>
+<span class="pygments-o">}</span>
+
+<span class="pygments-k">case</span> <span class="pygments-nc">Req</span><span class="pygments-o">(</span><span class="pygments-nc">ApiPath</span> <span class="pygments-o">::&gt;</span>
+        <span class="pygments-s">&quot;statuses&quot;</span> <span class="pygments-o">::&gt;</span>
+        <span class="pygments-s">&quot;user_timeline&quot;</span><span class="pygments-o">,</span>
+  <span class="pygments-k">this</span><span class="pygments-o">.</span><span class="pygments-n">method</span><span class="pygments-o">,</span> <span class="pygments-nc">GetRequest</span><span class="pygments-o">)</span> <span class="pygments-k">=&gt;</span> <span class="pygments-n">userTimeline</span>
+
+</pre>
+</div>
+<div class="slide" id="the-end">
+<h1>The End</h1>
+<ul class="incremental simple">
+<li>Questions?</li>
+<li><a class="reference external" href="http://esme.apache.org/">Learn or contribute: esme.apache.org</a></li>
+<li>Thank You!</li>
+</ul>
+</div>
+</div>
+</body>
+</html>
