@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.5: http://docutils.sourceforge.net/" />
+<meta name="version" content="S5 1.3" />
+<meta name="tranSitions" content="true" />
+<title>Scala-Java8</title>
+<meta name="author" content="Vassil Dichev" />
+<meta name="date" content="15.04.2015" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 5196 2007-06-03 20:25:28Z wiemann $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left {
+  clear: left }
+
+img.align-right {
+  clear: right }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<script src="ui/questers_gfx/slides.js" type="text/javascript"></script>
+<link rel="stylesheet" href="ui/questers_gfx/slides.css"
+      type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/questers_gfx/outline.css"
+      type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/questers_gfx/print.css"
+      type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/questers_gfx/opera.css"
+      type="text/css" media="projection" id="operaFix" />
+
+<style type="text/css">
+#currentSlide {display: none;}
+</style>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header">
+<div id="header">
+<img alt="images/BGJUG-logo.png" class="scale" src="images/BGJUG-logo.png" width="128" height="91" style="width: 128; height: 91;" />
+
+</div>
+
+</div>
+<div id="footer">
+<h1>Scala-Java8</h1>
+<h2>BG-JUG</h2>
+</div>
+</div>
+<div class="presentation">
+<div class="slide" id="slide0">
+<h1 class="title">Scala-Java8</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>Vassil Dichev</td></tr>
+<tr><th class="docinfo-name">Date:</th>
+<td>15.04.2015</td></tr>
+</tbody>
+</table>
+<!--  -->
+<blockquote>
+</blockquote>
+
+</div>
+<div class="slide" id="who-is-this-guy">
+<h1>Who is this guy?</h1>
+<ul class="simple">
+<li>J2EE / Spring</li>
+<li>Python / Ruby</li>
+<li>Open-source Scala projects (Apache ESME, Lift)</li>
+<li>Work<ul>
+<li>RememberTheMilk</li>
+<li>Sentiment</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="goals">
+<h1>Goals</h1>
+<ul class="simple">
+<li>It's never been easier for a Java developer to learn Scala</li>
+<li>By looking at Scala, we can learn about Java</li>
+</ul>
+</div>
+<div class="slide" id="what-is-scala">
+<h1>What is Scala</h1>
+<ul class="incremental simple">
+<li>Object-oriented</li>
+<li>Functional</li>
+<li>Static typing</li>
+<li>JVM</li>
+</ul>
+</div>
+<div class="slide" id="who-s-using-scala">
+<h1>Who's using Scala</h1>
+<table border="1" class="borderless docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>LinkedIn</td>
+<td>Twitter</td>
+</tr>
+<tr><td>Foursquare</td>
+<td>The Guardian</td>
+</tr>
+<tr><td>Coursera</td>
+<td>Klout</td>
+</tr>
+<tr><td>Quora</td>
+<td>Walmart</td>
+</tr>
+<tr><td>eBay</td>
+<td>Netflix</td>
+</tr>
+<tr><td>HBO Now</td>
+<td>TomTom</td>
+</tr>
+<tr><td>RememberTheMilk</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="slide" id="history">
+<h1>History</h1>
+<div class="sidebar">
+<p class="first sidebar-title"></p>
+<div align="center" class="align-center"><img alt="images/martin_odersky.jpg" class="scale last align-center" src="images/martin_odersky.jpg" width="166" height="256" style="width: 166; height: 256;" /></div>
+</div>
+<ul class="incremental simple">
+<li>1997- Martin Odersky &amp; Co. create Pizza</li>
+<li>2002- Pizza team create GJ (Generic Java)</li>
+<li>2003- Scala created</li>
+<li>2004- GJ becomes Java 5</li>
+<li>2011- Founded Typesafe with advisors James Gosling, Doug Lea, Rod Johnson</li>
+</ul>
+</div>
+<div class="slide" id="mailing-list-mentions">
+<h1>Mailing list mentions</h1>
+<ul class="simple">
+<li>Scala: 1600</li>
+<li>Groovy: 1330</li>
+<li>Clojure: 220</li>
+<li>Kotlin: 101</li>
+<li>Ceylon: 29</li>
+<li>Jython: 216</li>
+<li>Python: 990</li>
+<li>Jython | Python: 1410</li>
+<li>Ruby: 1350</li>
+<li>JRuby: 1030</li>
+<li>JRuby | Ruby: 1190</li>
+</ul>
+</div>
+<div class="slide" id="java-8-features">
+<h1>Java 8 Features</h1>
+<ul class="simple">
+<li>Lambda expressions</li>
+<li>Type inference</li>
+<li>Method references</li>
+<li>Default methods</li>
+<li>Streams</li>
+<li>Parallelism (CompletableFuture)</li>
+<li>Optional</li>
+</ul>
+<!-- Java: Lambda expressions -->
+<!--  -->
+<!-- Parameters -->
+<!-- arrow -> -->
+<!-- Body -->
+</div>
+<div class="slide" id="java-lambdas-initial-syntax">
+<h1>Java lambdas- initial syntax</h1>
+<pre class="code-block java literal-block">
+<span class="n">x</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="o">{</span><span class="n">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">&quot;%d + %d = %d%n&quot;</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">);}</span>
+<span class="o">()</span> <span class="o">=&gt;</span> <span class="o">{</span> <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;I am a Runnable&quot;</span><span class="o">);</span> <span class="o">}</span>
+
+</pre>
+</div>
+<div class="slide" id="scala-syntax">
+<h1>Scala syntax</h1>
+<pre class="code-block scala literal-block">
+<span class="n">x</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">{</span> <span class="n">printf</span><span class="o">(</span><span class="s">&quot;%d + %d = %d%n&quot;</span><span class="o">,</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">);</span> <span class="o">}</span>
+<span class="o">()</span> <span class="k">=&gt;</span> <span class="o">{</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;I am a function&quot;</span><span class="o">);</span> <span class="o">}</span>
+
+</pre>
+</div>
+<div class="slide" id="spot-the-differences">
+<h1>Spot the differences</h1>
+<table border="1" class="borderless docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><pre class="code-block java first last literal-block">
+<span class="n">x</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+<span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+</pre>
+</td>
+<td><pre class="code-block scala first last literal-block">
+<span class="n">x</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+<span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="slide" id="on-reusing-syntax">
+<h1>On reusing syntax</h1>
+<blockquote>
+<p>So, we felt that it was better to choose something that has already been shown to work well in the two languages that are most like Java -- C# and Scala -- rather than to invent something new.</p>
+<p class="attribution">&mdash;Brian Goetz</p>
+</blockquote>
+</div>
+<div class="slide" id="scala-anonymous-functions">
+<h1>Scala: Anonymous functions</h1>
+<ul>
+<li><p class="first">Java</p>
+<pre class="code-block java literal-block">
+<span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span> <span class="o">};</span>
+<span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span> <span class="o">};</span>
+<span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
+<span class="n">x</span> <span class="o">-&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">;</span>
+<span class="o">()</span> <span class="o">-&gt;</span> <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;hey&quot;</span><span class="o">)</span>
+
+</pre>
+</li>
+<li><p class="first">Scala</p>
+<pre class="code-block scala literal-block">
+<span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">}</span>
+<span class="o">{</span> <span class="n">_:</span> <span class="nc">Int</span> <span class="o">+</span> <span class="n">_:</span> <span class="nc">Int</span><span class="o">}</span>
+
+</pre>
+</li>
+</ul>
+</div>
+<div class="slide" id="on-placeholder">
+<h1>On _ placeholder</h1>
+<blockquote>
+<p>its OK to not turn Java into Scala.&nbsp;&nbsp;Different languages, different philosophies, so its OK if they draw the line in different places</p>
+<p class="attribution">&mdash;Brian Goetz</p>
+</blockquote>
+</div>
+<div class="slide" id="type">
+<h1>Type</h1>
+<ul>
+<li><p class="first">Java</p>
+<pre class="code-block java literal-block">
+<span class="n">Runnable</span> <span class="n">r</span> <span class="o">=</span>
+  <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hey!&quot;</span><span class="o">);</span>
+<span class="n">Callable</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span>
+  <span class="o">()</span> <span class="o">-&gt;</span> <span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hey!&quot;</span><span class="o">);</span>
+
+</pre>
+</li>
+<li><p class="first">Scala</p>
+<pre class="code-block scala literal-block">
+<span class="k">val</span> <span class="n">c</span><span class="k">:</span> <span class="o">()</span> <span class="o">=&gt;</span> <span class="nc">Unit</span> <span class="k">=</span> <span class="o">()</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hey!&quot;</span><span class="o">)</span>
+<span class="k">new</span> <span class="nc">Function0</span><span class="o">[</span><span class="kt">Unit</span><span class="o">]</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">apply</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hey&quot;</span><span class="o">)</span>
+<span class="o">}</span>
+
+</pre>
+</li>
+</ul>
+</div>
+<div class="slide" id="partial-functions">
+<h1>Partial Functions</h1>
+<pre class="code-block scala literal-block">
+<span class="k">val</span> <span class="n">root</span><span class="k">:</span> <span class="kt">PartialFunction</span><span class="o">[</span><span class="kt">Double</span>,<span class="kt">Double</span><span class="o">]</span> <span class="k">=</span> <span class="o">{</span>
+  <span class="k">case</span> <span class="n">d</span> <span class="k">if</span> <span class="o">(</span><span class="n">d</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="o">(</span><span class="n">d</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">).</span><span class="n">collect</span> <span class="o">{</span> <span class="k">case</span> <span class="mi">2</span> <span class="k">=&gt;</span> <span class="s">&quot;two&quot;</span> <span class="o">}</span>
+<span class="n">root</span><span class="o">.</span><span class="n">isDefinedAt</span><span class="o">(-</span><span class="mi">2</span><span class="o">)</span>
+
+</pre>
+</div>
+<div class="slide" id="variable-binding">
+<h1>Variable binding</h1>
+<ul>
+<li><p class="first">Java</p>
+<pre class="code-block java literal-block">
+<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="n">employees</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span>
+          <span class="n">forEach</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">e</span><span class="o">.</span><span class="na">getSalary</span><span class="o">());</span>
+<span class="c1">// COMPILER SAYS NO!
+</span>
+</pre>
+</li>
+<li><p class="first">Scala</p>
+<pre class="code-block scala literal-block">
+<span class="k">val</span> <span class="n">someNumbers</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(-</span><span class="mi">11</span><span class="o">,-</span><span class="mi">10</span><span class="o">,-</span><span class="mi">5</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">10</span><span class="o">)</span>
+<span class="k">var</span> <span class="n">sum</span> <span class="k">=</span> <span class="mi">0</span>
+<span class="n">someNumbers</span><span class="o">.</span><span class="n">foreach</span><span class="o">(</span><span class="n">sum</span> <span class="o">+=</span>  <span class="n">_</span><span class="o">)</span>
+
+</pre>
+</li>
+</ul>
+<!-- Differences -->
+<!-- Scala binds all variables (closure) -->
+<!-- Scala has function types -->
+<!-- partial application -->
+<!-- PartialFunctions -->
+<!-- Mail -->
+<!-- http://mail.openjdk.java.net/pipermail/lambda-dev/2011-September/003936.html -->
+<!-- http://mail.openjdk.java.net/pipermail/lambda-dev/2010-October/002479.html -->
+</div>
+<div class="slide" id="currying-partial-application">
+<h1>Currying/partial application</h1>
+<ul>
+<li><p class="first">Java</p>
+<pre class="code-block java literal-block">
+<span class="n">IntFunction</span><span class="o">&lt;</span><span class="n">IntUnaryOperator</span><span class="o">&gt;</span> <span class="n">curriedAdd</span> <span class="o">=</span>
+  <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">b</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">;</span>
+<span class="n">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">curriedAdd</span><span class="o">.</span><span class="na">apply</span><span class="o">(</span><span class="mi">4</span><span class="o">).</span>
+  <span class="n">applyAsInt</span><span class="o">(</span><span class="mi">5</span><span class="o">));</span>
+
+</pre>
+</li>
+<li><p class="first">Scala</p>
+<pre class="code-block scala literal-block">
+<span class="k">def</span> <span class="n">curriedAdd</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="n">curriedAdd</span><span class="o">(</span><span class="mi">2</span><span class="o">)(</span><span class="mi">3</span><span class="o">)</span>
+<span class="k">def</span> <span class="n">simpleAdd</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="k">val</span> <span class="n">add2</span> <span class="k">=</span> <span class="n">simpleAdd</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">_:</span> <span class="nc">Int</span><span class="o">)</span>
+
+</pre>
+</li>
+</ul>
+</div>
+<div class="slide" id="method-references">
+<h1>Method references</h1>
+<ul>
+<li><p class="first">Java</p>
+<pre class="code-block java literal-block">
+<span class="nl">Integer:</span><span class="o">:</span><span class="n">sum</span>
+<span class="o">(</span><span class="n">str</span><span class="o">,</span> <span class="n">i</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">str</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+<span class="nl">String:</span><span class="o">:</span><span class="n">substring</span>
+<span class="n">DateFormat</span> <span class="n">format</span> <span class="o">=</span>
+  <span class="k">new</span> <span class="n">DateFormat</span><span class="o">.</span><span class="na">getDateInstance</span><span class="o">();</span>
+<span class="o">(</span><span class="n">str</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">format</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+<span class="nl">format:</span><span class="o">:</span><span class="n">parse</span>
+
+</pre>
+</li>
+<li><p class="first">Scala</p>
+<pre class="code-block scala literal-block">
+<span class="k">val</span> <span class="n">func</span> <span class="k">=</span> <span class="n">simpleAdd</span> <span class="k">_</span>
+<span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="n">reduce</span> <span class="n">simpleAdd</span>
+
+</pre>
+</li>
+</ul>
+</div>
+<div class="slide" id="type-inference">
+<h1>Type inference</h1>
+<ul>
+<li><p class="first">Java- generics/lambdas</p>
+<pre class="code-block java literal-block">
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">myMap</span> <span class="o">=</span>
+  <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="n">IntBinaryOperator</span> <span class="n">bi</span> <span class="o">=</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span> <span class="o">}</span>
+
+</pre>
+</li>
+<li><p class="first">Scala- method-local inference</p>
+<pre class="code-block scala literal-block">
+<span class="k">val</span> <span class="n">s</span> <span class="k">=</span> <span class="s">&quot;it's a string&quot;</span>
+<span class="k">val</span> <span class="n">i</span> <span class="k">=</span> <span class="k">if</span> <span class="o">(</span><span class="n">predicate</span><span class="o">)</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">1</span>
+
+</pre>
+</li>
+</ul>
+</div>
+<div class="slide" id="java-default-methods">
+<h1>Java: Default methods</h1>
+<ul>
+<li><p class="first">Java</p>
+<pre class="code-block java literal-block">
+<span class="kd">interface</span> <span class="nc">Collection</span> <span class="o">{</span>
+ <span class="k">default</span> <span class="kt">void</span> <span class="nf">sort</span><span class="o">(</span><span class="n">Comparator</span><span class="o">&lt;?</span> <span class="kd">super</span> <span class="n">E</span><span class="o">&gt;</span> <span class="n">c</span><span class="o">){</span>
+  <span class="n">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">c</span><span class="o">);</span>
+ <span class="o">}</span>
+<span class="o">}</span>
+
+</pre>
+</li>
+<li><p class="first">Scala</p>
+<pre class="code-block scala literal-block">
+<span class="k">trait</span> <span class="nc">MyTrait</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">myInt</span> <span class="k">=</span> <span class="mi">2</span> <span class="c1">// can have values
+</span>  <span class="k">private</span> <span class="k">def</span> <span class="n">myMethod</span><span class="o">(</span><span class="n">s</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=</span>
+    <span class="n">s</span> <span class="o">*</span> <span class="n">myInt</span> <span class="c1">// and private methods
+</span><span class="o">}</span>
+
+</pre>
+</li>
+</ul>
+<!-- Differences -->
+<!-- Can have multiple method implementations -->
+<!-- Reference implementing class -->
+</div>
+<div class="slide" id="default-methods-resolution">
+<h1>Default methods resolution</h1>
+<div class="sidebar">
+<p class="first sidebar-title"></p>
+<div align="center" class="align-center"><img alt="images/Diamond_inheritance.png" class="scale last align-center" src="images/Diamond_inheritance.png" width="200" height="300" style="width: 200; height: 300;" /></div>
+</div>
+<ul>
+<li><p class="first">Classes always win</p>
+</li>
+<li><p class="first">More specific interface wins</p>
+</li>
+<li><p class="first">Disambiguate</p>
+<pre class="code-block java literal-block">
+<span class="kd">class</span> <span class="nc">implements</span> <span class="n">B</span><span class="o">,</span> <span class="n">A</span> <span class="o">{</span>
+  <span class="kt">void</span> <span class="nf">hello</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">B</span><span class="o">.</span><span class="na">super</span><span class="o">.</span><span class="na">hello</span><span class="o">();</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</pre>
+</li>
+</ul>
+</div>
+<div class="slide" id="scala-multiple-inheritance">
+<h1>Scala multiple inheritance</h1>
+<pre class="code-block scala literal-block">
+<span class="k">trait</span> <span class="nc">ObjectOriented</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">toString</span> <span class="k">=</span>
+    <span class="s">&quot;object-oriented &quot;</span> <span class="o">+</span> <span class="k">super</span><span class="o">.</span><span class="n">toString</span> <span class="o">}</span>
+<span class="k">trait</span> <span class="nc">Functional</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">toString</span> <span class="k">=</span>
+    <span class="s">&quot;functional &quot;</span> <span class="o">+</span> <span class="k">super</span><span class="o">.</span><span class="n">toString</span> <span class="o">}</span>
+<span class="k">class</span> <span class="nc">ProgrammingLanguage</span> <span class="o">{</span>
+  <span class="k">override</span> <span class="k">def</span> <span class="n">toString</span> <span class="k">=</span> <span class="s">&quot;language&quot;</span> <span class="o">}</span>
+<span class="k">var</span> <span class="n">scala</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ProgrammingLanguage</span>
+  <span class="k">with</span> <span class="nc">Functional</span> <span class="k">with</span> <span class="nc">ObjectOriented</span>
+<span class="c1">// object-oriented functional language
+</span><span class="n">scala</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ProgrammingLanguage</span>
+  <span class="k">with</span> <span class="nc">ObjectOriented</span> <span class="k">with</span> <span class="nc">Functional</span>
+<span class="c1">// functional object-oriented language
+</span>
+</pre>
+<!-- Mail -->
+<!-- http://mail.openjdk.java.net/pipermail/lambda-dev/2012-August/005446.html -->
+</div>
+<div class="slide" id="on-linearization">
+<h1>On linearization</h1>
+<blockquote>
+<p>We explored the linearization behavior used by Scala to resolve conflicts, and concluded it would be too foreign and &quot;magic&quot; for Java developers</p>
+<p class="attribution">&mdash;Brian Goetz</p>
+</blockquote>
+</div>
+<div class="slide" id="java-streams">
+<h1>Java: Streams</h1>
+<div class="sidebar">
+<p class="first sidebar-title"></p>
+<img alt="images/stream6.jpg" class="scale last" src="images/stream6.jpg" width="400" height="300" style="width: 400; height: 300;" />
+</div>
+<ul class="simple">
+<li>Lazy<ul>
+<li>Intermediate operations</li>
+<li>Terminal- enforce strictness</li>
+</ul>
+</li>
+<li>Traversible only once</li>
+<li>Short-circuiting</li>
+</ul>
+</div>
+<div class="slide" id="java-streams-in-action">
+<h1>Java streams in action</h1>
+<pre class="code-block java literal-block">
+<span class="n">employees</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span>
+          <span class="n">filter</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="o">).</span>
+          <span class="n">map</span><span class="o">(</span><span class="nl">Employee:</span><span class="o">:</span><span class="n">getSalary</span><span class="o">).</span>
+          <span class="n">reduce</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">sum</span><span class="o">)</span>
+
+</pre>
+</div>
+<div class="slide" id="scala-collections">
+<h1>Scala: Collections</h1>
+<ul class="simple">
+<li>Strict<ul>
+<li>Mutable</li>
+<li>Immutable</li>
+</ul>
+</li>
+<li>Non-strict<ul>
+<li>Iterator- single traversal</li>
+<li>View- multiple traversal</li>
+<li>Stream (memoizing)</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="scala-strict-vs-non-strict">
+<h1>Scala strict vs non-strict</h1>
+<pre class="code-block scala literal-block">
+<span class="n">employees</span><span class="o">.</span>        <span class="n">filter</span><span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">getAge</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="o">).</span>
+  <span class="n">map</span><span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">getSalary</span><span class="o">).</span>      <span class="n">sum</span>
+<span class="n">employees</span><span class="o">.</span><span class="n">iterator</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">getAge</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="o">).</span>
+  <span class="n">map</span><span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">getSalary</span><span class="o">).</span>      <span class="n">sum</span><span class="o">.</span><span class="n">toList</span>
+<span class="n">employees</span><span class="o">.</span>    <span class="n">view</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">getAge</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="o">).</span>
+  <span class="n">map</span><span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">getSalary</span><span class="o">).</span><span class="n">force</span><span class="o">.</span><span class="n">sum</span>
+
+</pre>
+</div>
+<div class="slide" id="streams">
+<h1>Streams</h1>
+<pre class="code-block scala literal-block">
+<span class="k">val</span> <span class="n">fibs</span><span class="k">:</span> <span class="kt">Stream</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span>
+  <span class="mi">0</span> <span class="err">#</span><span class="o">::</span> <span class="n">fibs</span><span class="o">.</span><span class="n">scanLeft</span><span class="o">(</span><span class="mi">1</span><span class="o">)(</span><span class="k">_</span> <span class="o">+</span> <span class="n">_</span><span class="o">)</span>
+
+</pre>
+</div>
+<div class="slide" id="parallel-streams">
+<h1>Parallel streams</h1>
+<ul>
+<li><p class="first">Java</p>
+<pre class="code-block java literal-block">
+<span class="n">employees</span><span class="o">.</span><span class="na">parallelStream</span><span class="o">().</span>
+          <span class="n">filter</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">e</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="o">).</span>
+          <span class="n">map</span><span class="o">(</span><span class="nl">Employee:</span><span class="o">:</span><span class="n">getSalary</span><span class="o">).</span>
+          <span class="n">reduce</span><span class="o">(</span><span class="nl">Integer:</span><span class="o">:</span><span class="n">sum</span><span class="o">)</span>
+
+</pre>
+</li>
+<li><p class="first">Scala</p>
+<pre class="code-block scala literal-block">
+<span class="n">employees</span><span class="o">.</span><span class="n">par</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">getAge</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="o">).</span>
+  <span class="n">map</span><span class="o">(</span><span class="n">_</span><span class="o">.</span><span class="n">getSalary</span><span class="o">).</span><span class="n">sum</span>
+
+</pre>
+</li>
+</ul>
+<!-- Difference -->
+<!-- Scala strict by default -->
+<!-- Lazy collections are separate -->
+<!-- Mail -->
+<!-- http://mail.openjdk.java.net/pipermail/lambda-libs-spec-observers/2013-March/001590.html -->
+<!-- http://mail.openjdk.java.net/pipermail/lambda-libs-spec-experts/2012-November/000353.html -->
+</div>
+<div class="slide" id="on-flatmap">
+<h1>On flatMap</h1>
+<blockquote>
+<p>Java isn't Scala.&nbsp;&nbsp;What works in Scala libraries may well not work in Java libraries, because the language is different.&nbsp;&nbsp;So the &quot;right&quot; answer in one language is not necessarily the right answer in another.</p>
+<p class="attribution">&mdash;Brian Goetz</p>
+</blockquote>
+<!-- http://www.nurkiewicz.com/2013/05/java-8-definitive-guide-to.html -->
+</div>
+<div class="slide" id="on-views">
+<h1>On views</h1>
+<blockquote>
+<p>Of course, an idea that &quot;fits&quot; in Scala or .NET may or may not fit in Java, or may require adaptation to fit in Java.</p>
+<p class="attribution">&mdash;Brian Goetz</p>
+</blockquote>
+</div>
+<div class="slide" id="futures">
+<h1>Futures</h1>
+<table border="1" class="borderless docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><strong>CompletableFuture</strong></td>
+<td><strong>Scala Future</strong></td>
+</tr>
+<tr><td>complete</td>
+<td>successful</td>
+</tr>
+<tr><td>completeExceptionally</td>
+<td>failed</td>
+</tr>
+<tr><td>thenApply</td>
+<td>map</td>
+</tr>
+<tr><td>exceptionally</td>
+<td>recover</td>
+</tr>
+<tr><td>handle</td>
+<td>transform</td>
+</tr>
+<tr><td>thenCompose</td>
+<td>flatMap</td>
+</tr>
+<tr><td>thenCombine</td>
+<td>reduce</td>
+</tr>
+<tr><td>acceptEither</td>
+<td>firstCompletedOf</td>
+</tr>
+<tr><td>allOf</td>
+<td>sequence</td>
+</tr>
+<tr><td>anyOf</td>
+<td>firstCompletedOf</td>
+</tr>
+</tbody>
+</table>
+<!-- Mail -->
+<!-- http://mail.openjdk.java.net/pipermail/lambda-dev/2010-June/001518.html -->
+</div>
+<div class="slide" id="optional-vs-option">
+<h1>Optional vs. Option</h1>
+<!-- http://www.nurkiewicz.com/2013/08/optional-in-java-8-cheat-sheet.html -->
+<ul class="simple">
+<li>Java Optional<ul>
+<li>ifPresent</li>
+<li>filter</li>
+<li>map</li>
+<li>orElse/orElseGet</li>
+<li>flatMap</li>
+</ul>
+</li>
+<li>Scala Option<ul>
+<li>Can act as collection<ul>
+<li>forall</li>
+<li>exists</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- Mail -->
+<!-- http://mail.openjdk.java.net/pipermail/lambda-libs-spec-experts/2013-June/001886.html -->
+</div>
+<div class="slide" id="java-has-it-why-scala">
+<h1>Java has it, why Scala?</h1>
+<blockquote>
+<p>People often ask me if these features coming to Java will slow the adoption of Scala. Quite the opposite! Instead, I feel the acceptance of these features by the Java Community Process validates our innovation in language design on the JVM. As developers come to understand what these features are and how they work, they will also develop a better appreciation of the more extensive support of functional programming that Scala provides.</p>
+<p class="attribution">&mdash;Martin Odersky</p>
+</blockquote>
+<!-- http://www.javaworld.com/article/2604122/scripting-jvm-languages/scala-founder-language-due-for-fundamental-rethink.html -->
+<!-- http://www.infoworld.com/article/2609013/java/scala-founder- -language-due-for- -fundamental-rethink-.html -->
+<!-- http://readwrite.com/2014/02/20/java-8-scala-competitors-bffs-martin-odersky -->
+</div>
+<div class="slide" id="language">
+<h1>Language</h1>
+<ul class="simple">
+<li>Syntax</li>
+<li>Community</li>
+<li>Idioms</li>
+</ul>
+</div>
+<div class="slide" id="did-scala-invent-all-this">
+<h1>Did Scala invent all this?</h1>
+<ul class="simple">
+<li>ML</li>
+<li>Ruby</li>
+<li>Erlang</li>
+<li>Guava</li>
+</ul>
+</div>
+<div class="slide" id="language-trends">
+<h1>Language trends</h1>
+<ul class="simple">
+<li>Functional programming<ul>
+<li>Erlang</li>
+<li>Haskell</li>
+<li>Clojure</li>
+<li>C#/F#</li>
+</ul>
+</li>
+<li>Types are important<ul>
+<li>JavaScript -&gt; TypeScript/PureScript</li>
+<li>PHP -&gt; Hack</li>
+<li>Clojure -&gt; clojure.typed</li>
+<li>Erlang -&gt; dialyzer</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="thank-you">
+<h1>Thank you!</h1>
+<blockquote>
+Questions?</blockquote>
+<!-- Car analogy -->
+<!-- Audi vs. VW vs. Skoda/Seat -->
+<!-- GM
+
+.. LDC
+
+.. LWD
+
+.. LDD -->
+<!-- Drawbacks -->
+<!-- Compiler is slow -->
+<!-- Backward compatibility -->
+<!-- Scala criticisms -->
+<!-- Slow
+
+.. Detractors to OOP/Java? -->
+<!-- Too many options
+
+.. 1984's Newspeak
+
+.. Trying to make everyone equally productive -->
+</div>
+</div>
+</body>
+</html>
