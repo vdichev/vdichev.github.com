@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<meta name="version" content="S5 1.1" />
+<title>Applying the pipeline pattern</title>
+<meta name="author" content="Vassil Dichev" />
+<meta name="date" content="29.08.2016" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<script src="ui/questers_gfx/slides.js" type="text/javascript"></script>
+<link rel="stylesheet" href="ui/questers_gfx/slides.css"
+      type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/questers_gfx/outline.css"
+      type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/questers_gfx/print.css"
+      type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/questers_gfx/opera.css"
+      type="text/css" media="projection" id="operaFix" />
+
+<style type="text/css">
+#currentSlide {display: none;}
+</style>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header">
+<div id="header">
+<img alt="images/questers.png" class="scale" src="images/questers.png" width="192" height="93" style="width: 192; height: 93;" />
+
+</div>
+
+</div>
+<div id="footer">
+<h1>Applying the pipeline pattern</h1>
+<h2>Questers</h2>
+</div>
+</div>
+<div class="presentation">
+<div class="slide" id="slide0">
+<h1 class="title">Applying the pipeline pattern</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>Vassil Dichev</td></tr>
+<tr><th class="docinfo-name">Date:</th>
+<td>29.08.2016</td></tr>
+</tbody>
+</table>
+<!--  -->
+<blockquote>
+</blockquote>
+
+</div>
+<div class="slide" id="patterns">
+<h1>Patterns</h1>
+<blockquote>
+pattern (noun): a reliable sample of traits, acts, tendencies, or other observable characteristics</blockquote>
+<ul class="simple">
+<li>Instruction pipelines</li>
+<li>Unix pipes</li>
+<li>Collection pipeline (Martin Fowler)</li>
+<li>Pipes and filters (Enterprise Integration Patterns)</li>
+</ul>
+</div>
+<div class="slide" id="unix">
+<h1>UNIX</h1>
+<div class="sidebar">
+<p class="first sidebar-title"></p>
+<img alt="images/pipe.png" class="scale last" src="images/pipe.png" width="306" height="395" style="width: 306; height: 395;" />
+</div>
+<!--  -->
+<blockquote>
+<p>We should have some ways of coupling programs like garden hose--screw in another segment when it becomes when it becomes necessary to massage data in another way.</p>
+<p>M.D.McIlroy</p>
+<p>October 11, 1964</p>
+</blockquote>
+</div>
+<div class="slide" id="pipelines">
+<h1>Pipelines</h1>
+<div class="sidebar">
+<p class="first sidebar-title"></p>
+<img alt="images/pipepanic.png" class="scale last" src="images/pipepanic.png" width="350" height="350" style="width: 350; height: 350;" />
+</div>
+<ul class="simple">
+<li>Processing items of the same type</li>
+<li>Small tools/services</li>
+<li>Fixed sequence of operations</li>
+<li>Well established communication interfaces</li>
+<li>Buffers</li>
+</ul>
+<!-- Variations -->
+<!-- Pipeline hardware architectures -->
+<!-- Collection pipeline pattern (Martin Fowler) -->
+<!-- Pipes and filters integration pattern -->
+<!-- Directed Acyclic Graph -->
+</div>
+<div class="slide" id="advantages">
+<h1>Advantages</h1>
+<!-- Pic needed -->
+<ul class="simple">
+<li>No cyclic dependencies</li>
+<li>Parallelism</li>
+<li>Laziness</li>
+<li>Immutability</li>
+<li>Debugging</li>
+</ul>
+</div>
+<div class="slide" id="characteristics">
+<h1>Characteristics</h1>
+<!-- Pic needed -->
+<!-- Latency -->
+<!-- Throughput -->
+<!-- Slowest element -->
+<img alt="images/pipelining-lessons.jpg" class="scale" src="images/pipelining-lessons.jpg" width="912" height="497" style="width: 912; height: 497;" />
+</div>
+<div class="slide" id="unix-pipe">
+<h1>UNIX pipe</h1>
+<ul class="simple">
+<li>Processing item: lines</li>
+<li>Small tools</li>
+<li>Communication interface: text</li>
+<li>Buffer</li>
+<li>Lazy and parallel</li>
+<li>Immutable</li>
+</ul>
+</div>
+<div class="slide" id="functional-programming">
+<h1>Functional programming</h1>
+<blockquote>
+&quot;90% of functional programming is list processing&quot;</blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><ul class="first last simple">
+<li>map</li>
+</ul>
+</td>
+<td><img alt="images/map_pipeline.png" class="scale first last" src="images/map_pipeline.png" width="576" height="69" style="width: 576; height: 69;" />
+</td>
+</tr>
+<tr><td><ul class="first last simple">
+<li>filter</li>
+</ul>
+</td>
+<td><img alt="images/filter_pipeline.png" class="scale first last" src="images/filter_pipeline.png" width="506" height="69" style="width: 506; height: 69;" />
+</td>
+</tr>
+<tr><td><ul class="first last simple">
+<li>reduce</li>
+</ul>
+</td>
+<td><img alt="images/reduce_pipeline.png" class="scale first last" src="images/reduce_pipeline.png" width="409" height="69" style="width: 409; height: 69;" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="slide" id="loop-with-java-streams">
+<h1>Loop with Java streams</h1>
+<pre class="code java literal-block">
+<span class="name">employees</span><span class="operator">.</span><span class="name attribute">stream</span><span class="operator">().</span>
+          <span class="name">filter</span><span class="operator">(</span><span class="name">e</span> <span class="operator">-&gt;</span> <span class="name">e</span><span class="operator">.</span><span class="name attribute">getAge</span><span class="operator">()</span> <span class="operator">&gt;</span> <span class="literal number integer">30</span><span class="operator">).</span>
+          <span class="name">map</span><span class="operator">(</span><span class="name label">Employee:</span><span class="operator">:</span><span class="name">getSalary</span><span class="operator">).</span>
+          <span class="name">reduce</span><span class="operator">(</span><span class="name label">Integer:</span><span class="operator">:</span><span class="name">sum</span><span class="operator">)</span>
+</pre>
+</div>
+<div class="slide" id="java-streams">
+<h1>Java Streams</h1>
+<div class="sidebar">
+<p class="first sidebar-title"></p>
+<img alt="images/duke-with-pipes.jpeg" class="scale last" src="images/duke-with-pipes.jpeg" width="600" height="310" style="width: 600; height: 310;" />
+</div>
+<ul class="simple">
+<li>Lazy</li>
+<li>Short-circuiting</li>
+<li>Traversible only once</li>
+<li>Effectively final</li>
+</ul>
+</div>
+<div class="slide" id="java-pipes">
+<h1>Java pipes</h1>
+<ul class="simple">
+<li>Processing item: objects</li>
+<li>Small methods</li>
+<li>Communication interface: method invocation</li>
+<li>Lazy and parallel</li>
+<li>Immutable</li>
+</ul>
+</div>
+<div class="slide" id="reactive-streams">
+<h1>Reactive streams</h1>
+<blockquote>
+asynchronous stream processing with non-blocking back pressure</blockquote>
+<pre class="code scala literal-block">
+<span class="name class">Source</span><span class="operator">(</span><span class="name class">List</span><span class="operator">(</span><span class="literal number integer">1</span><span class="operator">,</span><span class="literal number integer">2</span><span class="operator">,</span><span class="literal number integer">3</span><span class="operator">)).</span>
+<span class="error">&nbsp;&nbsp;</span><span class="name">filter</span><span class="operator">(</span><span class="keyword">_</span> <span class="operator">%</span> <span class="literal number integer">2</span> <span class="operator">==</span> <span class="literal number integer">0</span><span class="operator">).</span>
+<span class="error">&nbsp;&nbsp;</span><span class="name">map</span><span class="operator">(</span><span class="keyword">_</span> <span class="operator">*</span> <span class="literal number integer">2</span><span class="operator">).</span>
+<span class="error">&nbsp;&nbsp;</span><span class="name">runFold</span><span class="operator">(</span><span class="literal number integer">0</span><span class="operator">)(</span><span class="keyword">_</span> <span class="operator">+</span> <span class="keyword">_</span><span class="operator">).</span>
+<span class="error">&nbsp;&nbsp;</span><span class="name">foreach</span><span class="operator">(</span><span class="name">println</span><span class="operator">)</span>
+</pre>
+</div>
+<div class="slide" id="akka-streams">
+<h1>Akka streams</h1>
+<img alt="images/actorz.png" class="scale" src="images/actorz.png" width="437" height="333" style="width: 437; height: 333;" />
+</div>
+<div class="slide" id="reactive-pipeline">
+<h1>Reactive pipeline</h1>
+<ul class="simple">
+<li>Processing item: message</li>
+<li>Small services</li>
+<li>Communication interface: message passing</li>
+<li>Buffers: actor inboxes</li>
+<li>Lazy, asynchronous and parallel</li>
+<li>Immutable</li>
+</ul>
+</div>
+<div class="slide" id="rxjava-filter">
+<h1>RxJava filter</h1>
+<img alt="images/filter.png" class="scale" src="images/filter.png" width="640" height="310" style="width: 640; height: 310;" />
+</div>
+<div class="slide" id="rxjava-map">
+<h1>RxJava map</h1>
+<img alt="images/map.png" class="scale" src="images/map.png" width="640" height="305" style="width: 640; height: 305;" />
+</div>
+<div class="slide" id="rxjava-reduce">
+<h1>RxJava reduce</h1>
+<img alt="images/reduce.png" class="scale" src="images/reduce.png" width="640" height="320" style="width: 640; height: 320;" />
+</div>
+<div class="slide" id="sentimentmetrics-library">
+<h1>SentimentMetrics Library</h1>
+<ul class="simple">
+<li>Fetching message from provider</li>
+<li>Analyzing message<ul>
+<li>Language</li>
+<li>Gender of user</li>
+<li>Sentiment</li>
+</ul>
+</li>
+<li>Saving to DB</li>
+<li>Automation rules</li>
+<li>Displaying to customer</li>
+</ul>
+</div>
+<div class="slide" id="sentimentmetrics-take-2">
+<h1>SentimentMetrics, take 2</h1>
+<!-- Pic needed -->
+<ul class="simple">
+<li>Service<ul>
+<li>Drawbacks<ul>
+<li>(de)serialization</li>
+<li>network overhead</li>
+</ul>
+</li>
+<li>Advantages<ul>
+<li>redundancy</li>
+<li>failover</li>
+<li>throughput</li>
+<li>flexibility in deployment</li>
+<li>upgradeability</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="slide" id="sentiment-pipeline">
+<h1>Sentiment pipeline</h1>
+<ul class="simple">
+<li>Processing item: message</li>
+<li>Small services</li>
+<li>Communication: Redis</li>
+<li>Buffers: Redis list/Actors</li>
+<li>Lazy, asynchronous and parallel</li>
+<li>Immutable</li>
+</ul>
+</div>
+<div class="slide" id="sentiment-services">
+<h1>Sentiment services</h1>
+<img alt="images/sentiment.png" class="scale" src="images/sentiment.png" width="500" height="460" style="width: 500; height: 460;" />
+</div>
+<div class="slide" id="conclusion">
+<h1>Conclusion</h1>
+<ul class="simple">
+<li>Small specialized components</li>
+<li>Eliminate shared global mutable state</li>
+<li>Good design principles are much longer-lived than buzzwords</li>
+</ul>
+</div>
+<div class="slide" id="stream-centric-microservices">
+<h1>Stream-centric microservices</h1>
+<p>Services are composed using Unix-like pipelines (the Web meets Unix = true loose-coupling)</p>
+<p>Juval Löwy</p>
+</div>
+<div class="slide" id="links">
+<h1>Links</h1>
+<!-- https://medium.com/@drozzy/rewriting-pipes-and-filters-with-typed-actors-843fad00814f#.98qx9flvh -->
+<ul class="simple">
+<li><a class="reference external" href="http://doc.cat-v.org/unix/pipes/">http://doc.cat-v.org/unix/pipes/</a></li>
+<li><a class="reference external" href="http://martinfowler.com/articles/collection-pipeline/">http://martinfowler.com/articles/collection-pipeline/</a></li>
+<li><a class="reference external" href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/PipesAndFilters.html">http://www.enterpriseintegrationpatterns.com/patterns/messaging/PipesAndFilters.html</a></li>
+<li><a class="reference external" href="http://www.confluent.io/blog/apache-kafka-samza-and-the-unix-philosophy-of-distributed-data">http://www.confluent.io/blog/apache-kafka-samza-and-the-unix-philosophy-of-distributed-data</a></li>
+<li><a class="reference external" href="https://medium.com/&#64;skamille/microservices-real-architectural-patterns-68bd83bbb6cd">https://medium.com/&#64;skamille/microservices-real-architectural-patterns-68bd83bbb6cd</a></li>
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Microservices">https://en.wikipedia.org/wiki/Microservices</a></li>
+<li><a class="reference external" href="http://david-peter.de/cube-composer/">http://david-peter.de/cube-composer/</a></li>
+</ul>
+<!-- "Services are composed using Unix-like pipelines (the Web meets Unix = true loose-coupling) -->
+</div>
+</div>
+</body>
+</html>
