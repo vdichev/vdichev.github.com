@@ -3,7 +3,7 @@ Scala- introduction
 
 
 :author: Vassil Dichev
-:date: |date|
+:date: 26.01.2017
 
 Why learn?
 ----------
@@ -93,60 +93,6 @@ Data structures
 * Tuples
 
 * Maps
-
-case classes
-------------
-
-* getters
-
-* setters
-
-* toString
-
-* equals
-
-* hashCode
-
-pattern matching
-----------------
-
-.. class:: incremental
-
-* wildcards
-
-* constants
-
-* variable
-
-* constructor
-
-* sequence
-
-* tuple
-
-* variable binding
-
-* guards
-
-pattern matching usage
-----------------------
-
-* match
-
-* variable assignment
-
-* for expressions
-
-* try / catch
-
-imports
--------
-
-* on-demand
-
-* selector
-
-* renaming
 
 Additional resources
 --------------------

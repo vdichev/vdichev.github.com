@@ -3,7 +3,7 @@ Scala- functional programming
 
 
 :author: Vassil Dichev
-:date: |date|
+:date: 09.02.2017
 
 From OOP to FP
 --------------
@@ -188,6 +188,14 @@ Additional resources
 Homework
 --------
 
+* Implement a tail-recursive function size that takes a list
+
+* Implement tail-recursive filter and map that take a list and a function
+
 * Implement map and filter in terms of foldLeft
+
+* Try to implement previous homework solutions recursively
+
+* Try to implement previous homework solutions with for comprehensions in terms of flatMap/filter/map
 
 .. |date| date:: %d.%m.%Y
