@@ -26,14 +26,6 @@ Outside view
 Extending and mixins
 --------------------
 
-.. sidebar:: \
-
-  .. image:: images/Diamond_inheritance.png
-      :class: scale
-      :width: 200
-      :height: 300
-      :align: center
-
 .. class:: incremental
 
 * Extending classes or traits

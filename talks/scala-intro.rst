@@ -3,7 +3,7 @@ Scala- introduction
 
 
 :author: Vassil Dichev
-:date: 26.01.2017
+:date: |date|
 
 Why learn?
 ----------
@@ -109,8 +109,6 @@ Homework
 --------
 
 * Check if a string has balanced parentheses
-
-* Get longest palindrome in a string
 
 * Given items with prices, buy those that sum to a specified amount of money
 
