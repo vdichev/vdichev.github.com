@@ -3,16 +3,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
 <meta name="version" content="S5 1.1" />
 <title>Scala- functional programming</title>
 <meta name="author" content="Vassil Dichev" />
-<meta name="date" content="09.02.2017" />
+<meta name="date" content="28.08.2018" />
 <style type="text/css">
 
 /*
 :Author: David Goodger (goodger@python.org)
-:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
 :Copyright: This stylesheet has been placed in the public domain.
 
 Default cascading style sheet for the HTML output of Docutils.
@@ -39,6 +39,14 @@ table.borderless td, table.borderless th {
 
 .hidden {
   display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
 
 a.toc-backref {
   text-decoration: none ;
@@ -164,18 +172,23 @@ h2.subtitle {
 hr.docutils {
   width: 75% }
 
-img.align-left, .figure.align-left, object.align-left {
+img.align-left, .figure.align-left, object.align-left, table.align-left {
   clear: left ;
   float: left ;
   margin-right: 1em }
 
-img.align-right, .figure.align-right, object.align-right {
+img.align-right, .figure.align-right, object.align-right, table.align-right {
   clear: right ;
   float: right ;
   margin-left: 1em }
 
 img.align-center, .figure.align-center, object.align-center {
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
   margin-left: auto;
   margin-right: auto;
 }
@@ -196,6 +209,15 @@ div.align-right {
 
 /* div.align-center * { */
 /*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
 
 ol.simple, ul.simple {
   margin-bottom: 1em }
@@ -379,7 +401,7 @@ ul.auto-toc {
 <tr><th class="docinfo-name">Author:</th>
 <td>Vassil Dichev</td></tr>
 <tr><th class="docinfo-name">Date:</th>
-<td>09.02.2017</td></tr>
+<td>28.08.2018</td></tr>
 </tbody>
 </table>
 
@@ -421,6 +443,13 @@ ul.auto-toc {
 <h1>Recursion</h1>
 <img alt="images/stack.jpg" class="scale align-center" src="images/stack.jpg" width="687" height="526" style="width: 687; height: 526;" />
 </div>
+<div class="slide" id="tail-recursion">
+<h1>Tail recursion</h1>
+<ul class="simple">
+<li>&#64;tailrec</li>
+<li>accumulators</li>
+</ul>
+</div>
 <div class="slide" id="immutability">
 <h1>Immutability</h1>
 <p>Classes should be immutable unless there's a very good reason to make them mutable</p>
@@ -432,45 +461,10 @@ ul.auto-toc {
 <h1>Persistent data structures</h1>
 <img alt="images/list.jpg" class="scale align-center" src="images/list.jpg" width="795" height="570" style="width: 795; height: 570;" />
 </div>
-<div class="slide" id="case-classes">
-<h1>case classes</h1>
+<div class="slide" id="exercise">
+<h1>Exercise</h1>
 <ul class="simple">
-<li>getters</li>
-<li>setters</li>
-<li>toString</li>
-<li>equals</li>
-<li>hashCode</li>
-</ul>
-</div>
-<div class="slide" id="pattern-matching">
-<h1>pattern matching</h1>
-<ul class="incremental simple">
-<li>wildcards</li>
-<li>constants</li>
-<li>variable</li>
-<li>constructor</li>
-<li>sequence</li>
-<li>tuple</li>
-<li>variable binding</li>
-<li>guards</li>
-</ul>
-</div>
-<div class="slide" id="pattern-matching-usage">
-<h1>pattern matching usage</h1>
-<ul class="simple">
-<li>match</li>
-<li>variable assignment</li>
-<li>for expressions</li>
-<li>try / catch</li>
-</ul>
-</div>
-<div class="slide" id="id1">
-<h1>Functions</h1>
-<ul class="simple">
-<li>Local functions</li>
-<li>Function literals</li>
-<li>Partially applied functions</li>
-<li>Partial functions</li>
+<li>Implement a tail-recursive function size that takes a list</li>
 </ul>
 </div>
 <div class="slide" id="higher-order-functions">
@@ -495,27 +489,51 @@ ul.auto-toc {
 <h1>reduce</h1>
 <img alt="images/reduce.png" class="scale" src="images/reduce.png" width="640" height="320" style="width: 640; height: 320;" />
 </div>
-<div class="slide" id="sugar-for-syntax">
-<h1>Sugar for syntax</h1>
+<div class="slide" id="reading-fold-signature">
+<h1>Reading fold signature</h1>
+<ul class="simple">
+<li>Multiple parameter lists</li>
+<li>By-name parameters</li>
+</ul>
+</div>
+<div class="slide" id="folding-right-or-left">
+<h1>Folding right or left</h1>
+<img alt="images/Right-fold-transformation.png" class="scale align-center" src="images/Right-fold-transformation.png" width="320" height="158" style="width: 320; height: 158;" />
+<img alt="images/Left-fold-transformation.png" class="scale align-center" src="images/Left-fold-transformation.png" width="320" height="158" style="width: 320; height: 158;" />
+</div>
+<div class="slide" id="id1">
+<h1>Exercise</h1>
+<ul class="simple">
+<li>Implement tail-recursive filter and map that take a list and a function<ul>
+<li>reverse</li>
+</ul>
+</li>
+<li>Implement map and filter in terms of foldRight</li>
+</ul>
+</div>
+<div class="slide" id="syntax-sugar">
+<h1>Syntax sugar</h1>
 <img alt="images/godji-opakovka2.jpg" class="scale align-center" src="images/godji-opakovka2.jpg" width="1000" height="744" style="width: 1000; height: 744;" />
+</div>
+<div class="slide" id="id2">
+<h1>Functions</h1>
+<ul class="simple">
+<li>Local functions</li>
+<li>Function literals</li>
+<li>Partially applied functions</li>
+<li>Partial functions</li>
+<li>Currying</li>
+</ul>
 </div>
 <div class="slide" id="additional-resources">
 <h1>Additional resources</h1>
 <ul class="simple">
 <li><a class="reference external" href="https://lihaoyi.github.io/Ammonite">Ammonite shell</a></li>
 <li><a class="reference external" href="http://scala-ide.org/download/sdk.html">Scala IDE</a></li>
+<li><a class="reference external" href="http://scastie.scala-lang.org/">Scastie</a></li>
 <li><a class="reference external" href="http://www.scala-js-fiddle.com/">Scala Fiddle</a></li>
 <li><a class="reference external" href="http://www.scala-lang.org/api/current/">API Docs</a></li>
-</ul>
-</div>
-<div class="slide" id="homework">
-<h1>Homework</h1>
-<ul class="simple">
-<li>Implement a tail-recursive function size that takes a list</li>
-<li>Implement tail-recursive filter and map that take a list and a function</li>
-<li>Implement map and filter in terms of foldLeft</li>
-<li>Try to implement previous homework solutions recursively</li>
-<li>Try to implement previous homework solutions with for comprehensions in terms of flatMap/filter/map</li>
+<li><a class="reference external" href="http://david-peter.de/cube-composer/">Cube composer</a></li>
 </ul>
 </div>
 </div>

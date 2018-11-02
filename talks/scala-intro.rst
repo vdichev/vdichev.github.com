@@ -10,6 +10,15 @@ Why learn?
       A language that doesn’t affect the way you think about programming is not worth knowing. — Alan Perlis
     
 
+Scalastic principles
+--------------------
+
+.. image:: images/scalastic_principles.jpeg
+    :class: scale
+    :width: 1024
+    :height: 768
+    :align: center
+
 Scala influences
 ----------------
 
@@ -103,15 +112,21 @@ Additional resources
 
 * `Scala Fiddle <http://www.scala-js-fiddle.com/>`_
 
+* `Scastie <http://scastie.scala-lang.org/>`_
+
 * `API Docs <http://www.scala-lang.org/api/current/>`_
 
-Homework
+Exercise
 --------
+
+.. class:: incremental
 
 * Check if a string has balanced parentheses
 
-* Given items with prices, buy those that sum to a specified amount of money
+  * isEmpty
 
-* Extra: Find all anagrams of a word (given dictionary)
+  * head
+
+  * tail
 
 .. |date| date:: %d.%m.%Y

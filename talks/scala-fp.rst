@@ -3,7 +3,7 @@ Scala- functional programming
 
 
 :author: Vassil Dichev
-:date: 09.02.2017
+:date: |date|
 
 From OOP to FP
 --------------
@@ -52,6 +52,13 @@ Recursion
     :height: 526
     :align: center
 
+Tail recursion
+--------------
+
+* @tailrec
+
+* accumulators
+
 Immutability
 ------------
 
@@ -72,61 +79,10 @@ Persistent data structures
     :height: 570
     :align: center
 
-case classes
-------------
+Exercise
+--------
 
-* getters
-
-* setters
-
-* toString
-
-* equals
-
-* hashCode
-
-pattern matching
-----------------
-
-.. class:: incremental
-
-* wildcards
-
-* constants
-
-* variable
-
-* constructor
-
-* sequence
-
-* tuple
-
-* variable binding
-
-* guards
-
-pattern matching usage
-----------------------
-
-* match
-
-* variable assignment
-
-* for expressions
-
-* try / catch
-
-Functions
----------
-
-* Local functions
-
-* Function literals
-
-* Partially applied functions
-
-* Partial functions
+* Implement a tail-recursive function size that takes a list
 
 Higher-order functions
 ----------------------
@@ -165,14 +121,58 @@ reduce
     :width: 640
     :height: 320
 
-Sugar for syntax
-----------------
+Reading fold signature
+----------------------
+
+* Multiple parameter lists
+
+* By-name parameters
+
+Folding right or left
+---------------------
+
+.. image:: images/Right-fold-transformation.png
+    :class: scale
+    :width: 320
+    :height: 158
+    :align: center
+
+.. image:: images/Left-fold-transformation.png
+    :class: scale
+    :width: 320
+    :height: 158
+    :align: center
+
+Exercise
+--------
+
+* Implement tail-recursive filter and map that take a list and a function
+
+  * reverse
+
+* Implement map and filter in terms of foldRight
+
+Syntax sugar
+------------
 
 .. image:: images/godji-opakovka2.jpg
     :class: scale
     :width: 1000
     :height: 744
     :align: center
+
+Functions
+---------
+
+* Local functions
+
+* Function literals
+
+* Partially applied functions
+
+* Partial functions
+
+* Currying
 
 Additional resources
 --------------------
@@ -181,21 +181,12 @@ Additional resources
 
 * `Scala IDE <http://scala-ide.org/download/sdk.html>`_
 
+* `Scastie <http://scastie.scala-lang.org/>`_
+
 * `Scala Fiddle <http://www.scala-js-fiddle.com/>`_
 
 * `API Docs <http://www.scala-lang.org/api/current/>`_
 
-Homework
---------
-
-* Implement a tail-recursive function size that takes a list
-
-* Implement tail-recursive filter and map that take a list and a function
-
-* Implement map and filter in terms of foldLeft
-
-* Try to implement previous homework solutions recursively
-
-* Try to implement previous homework solutions with for comprehensions in terms of flatMap/filter/map
+* `Cube composer <http://david-peter.de/cube-composer/>`_
 
 .. |date| date:: %d.%m.%Y

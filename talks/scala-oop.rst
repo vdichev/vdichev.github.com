@@ -10,6 +10,13 @@ What is OOP anyway?
       I invented the term Object-Oriented, and I can tell you I did not have C++ in mind — Alan Kay
     
 
+Discussion
+----------
+
+* Use inheritance wisely
+
+* Avoid mutability
+
 Outside view
 ------------
 
@@ -49,9 +56,9 @@ Inside view
 
 * Constructors
 
-  * primary
+  .. primary
 
-  * auxiliary
+  .. auxiliary
 
 Methods
 -------
@@ -64,6 +71,15 @@ Methods
 
 * Overriding
 
+imports
+-------
+
+* on-demand
+
+* selector
+
+* renaming
+
 Visibility
 ----------
 
@@ -75,22 +91,6 @@ Visibility
 
 * private
 
-Discussion
-----------
-
-* Use inheritance wisely
-
-* Avoid mutability
-
-imports
--------
-
-* on-demand
-
-* selector
-
-* renaming
-
 Additional resources
 --------------------
 
@@ -99,6 +99,8 @@ Additional resources
 * `Scala IDE <http://scala-ide.org/download/sdk.html>`_
 
 * `Scala Fiddle <http://www.scala-js-fiddle.com/>`_
+
+* `Scastie <http://scastie.scala-lang.org/>`_
 
 * `API Docs <http://www.scala-lang.org/api/current/>`_
 

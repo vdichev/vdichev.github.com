@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
 <meta name="version" content="S5 1.1" />
-<title>Scala- introduction</title>
+<title>Scala- implicits and the typeclass pattern</title>
 <meta name="author" content="Vassil Dichev" />
 <meta name="date" content="13.07.2017" />
 <style type="text/css">
@@ -365,13 +365,13 @@ ul.auto-toc {
 
 </div>
 <div id="footer">
-<h1>Scala- introduction</h1>
+<h1>Scala- implicits and the typeclass pattern</h1>
 
 </div>
 </div>
 <div class="presentation">
 <div class="slide" id="slide0">
-<h1 class="title">Scala- introduction</h1>
+<h1 class="title">Scala- implicits and the typeclass pattern</h1>
 <table class="docinfo" frame="void" rules="none">
 <col class="docinfo-name" />
 <col class="docinfo-content" />
@@ -384,72 +384,60 @@ ul.auto-toc {
 </table>
 
 </div>
-<div class="slide" id="why-learn">
-<h1>Why learn?</h1>
+<div class="slide" id="functions-and-data">
+<h1>Functions and data</h1>
 <blockquote>
-A language that doesn’t affect the way you think about programming is not worth knowing. — Alan Perlis</blockquote>
+<p>It is better to have 100 functions operate on one data structure than 10 functions on 10 data structures</p>
+<p class="attribution">&mdash;Alan Perlis</p>
+</blockquote>
 </div>
-<div class="slide" id="scalastic-principles">
-<h1>Scalastic principles</h1>
-<img alt="images/scalastic_principles.jpeg" class="scale align-center" src="images/scalastic_principles.jpeg" width="1024" height="768" style="width: 1024; height: 768;" />
+<div class="slide" id="functions-and-data-abstraction">
+<h1>Functions and data abstraction</h1>
+<blockquote>
+<p>It is better to have 100 functions operate on one <strong>data abstraction</strong> than 10 functions on 10 data structures.</p>
+<p class="attribution">&mdash;Rich Hickey (creator of Clojure)</p>
+</blockquote>
 </div>
-<div class="slide" id="scala-influences">
-<h1>Scala influences</h1>
-<ul class="incremental simple">
-<li>Object-oriented (Ruby/Smalltalk/Python)</li>
-<li>Functional (ML, Haskell)</li>
-<li>Static typing (ML, Haskell)</li>
-<li>JVM (Java)</li>
-<li>Concurrent (Erlang)</li>
-</ul>
-</div>
-<div class="slide" id="getting-started">
-<h1>Getting started</h1>
-<ul class="incremental simple">
-<li>everything is an expression</li>
-<li>REPL (shell)</li>
-<li>can nest almost anything</li>
-<li>types after identifier (or inferred)</li>
-</ul>
-</div>
-<div class="slide" id="definitions">
-<h1>Definitions</h1>
-<ul class="incremental simple">
-<li>variables- var</li>
-<li>immutable variables- val</li>
-<li>type inference</li>
-<li>functions / methods- def</li>
-</ul>
-</div>
-<div class="slide" id="things-you-can-go-without">
-<h1>Things you can go without</h1>
-<ul class="incremental simple">
-<li>semicolons</li>
-<li>public</li>
-<li>return</li>
-<li>dot</li>
-<li>parentheses</li>
-</ul>
-</div>
-<div class="slide" id="control">
-<h1>Control</h1>
-<ul class="incremental simple">
-<li>if</li>
-<li>while</li>
-<li>for<ul>
-<li>generators</li>
-<li>definitions</li>
-<li>filters</li>
+<div class="slide" id="currying">
+<h1>Currying</h1>
+<ul class="simple">
+<li>Multiple parameter lists</li>
+<li>Implicits<ul>
+<li>conversions</li>
+<li>parameters</li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="slide" id="data-structures">
-<h1>Data structures</h1>
+<div class="slide" id="typeclass-pattern">
+<h1>Typeclass pattern</h1>
 <ul class="incremental simple">
-<li>Lists</li>
-<li>Tuples</li>
-<li>Maps</li>
+<li>Ad-hoc polymorphism</li>
+<li>Decouples interface implementation</li>
+<li>When classes not under our control</li>
+<li>When multiple implementations can exist</li>
+</ul>
+</div>
+<div class="slide" id="implicits">
+<h1>Implicits</h1>
+<ul class="simple">
+<li>Not applied if code typechecks</li>
+<li>implicitNotFound for error messages</li>
+<li>can be disabled by hiding import or via style plugin</li>
+<li>-Xprint:typer option</li>
+<li>resolution rules</li>
+</ul>
+</div>
+<div class="slide" id="implicit-resolution-rules">
+<h1>Implicit resolution rules</h1>
+<ul class="simple">
+<li>current scope</li>
+<li>imports</li>
+<li>companion objects</li>
+<li>parameter arguments</li>
+<li>type parameters</li>
+<li>outer objects of nested types</li>
+<li>parent objects</li>
 </ul>
 </div>
 <div class="slide" id="additional-resources">
@@ -460,17 +448,6 @@ A language that doesn’t affect the way you think about programming is not wort
 <li><a class="reference external" href="http://www.scala-js-fiddle.com/">Scala Fiddle</a></li>
 <li><a class="reference external" href="http://scastie.scala-lang.org/">Scastie</a></li>
 <li><a class="reference external" href="http://www.scala-lang.org/api/current/">API Docs</a></li>
-</ul>
-</div>
-<div class="slide" id="exercise">
-<h1>Exercise</h1>
-<ul class="incremental simple">
-<li>Check if a string has balanced parentheses<ul>
-<li>isEmpty</li>
-<li>head</li>
-<li>tail</li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
